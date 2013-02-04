@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Google Analytics, Event Tracking and Discovery Tools</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Being A Presentation To The Aseembled Body In Chicago">
+		<meta name="author" content="Emily Lynema, Adam Constabaris">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -38,22 +38,27 @@
 			<div class="slides">
 
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h2>Google Analytics, Event Tracking and Discovery Tools</h2>
+					<h5>Going Beyond Pageviews</h5>
+					<small>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						Emily Lynema, Associate Head, IT NCSU Libraries
+					</p>						
+					<p>
+						Adam Constabaris, Singe de Code, NCSU Libraries
 					</p>
+				</small>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
+					<h2>Overview</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+						Google Analytics can be used to track not only pageviews, but in-page events, allowing you to understand more
+						about how your site is being used.
 					</p>
 
 					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						This is how you embed speaker notes.  Hit 's' to open 'em up.
 					</aside>
 				</section>
 
@@ -89,45 +94,166 @@
 					</section>
 				</section>
 
+			
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview. Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+					<section>
+						<h2>The Plumbing</h2>
+						<p class="framment">
+							Of course it involves jQuery!
+						</p>
+						<p class="fragment">
+							It doesn't <em>have</em> to, though.
+						</p>
+						<p class="fragment">
+							<a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking?hl=ja">https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking?hl=ja</a>
+						</p>
+					</section>
+			
+					<section>
+						<h2>Background</h2>
+						<p>
+							When the Google Analytics JavaScript is loaded, it embeds a "tracker" object 
+							on your page, which you can then <a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApi_gaq">interact with</a>
+						 	to track events.
+						</p>
 
-				<section>
-					<h2>rvl.io</h2>
-					<p>
-						If you don't like writing slides in HTML you can use the online editor <a href="http://www.rvl.io" target="_blank">rvl.io</a>.
-					</p>
-				</section>
+						<pre contenteditable>
+							<code>
+								// safely initialize _gaq; if GA loads after your code,
+								// any events already in the queue will be sent to the Goog.
+								var _gaq = _gaq || [];
+								...
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
+								_gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optional_eventValue ]);
+							</code>
+						</pre>
+						<aside class="notes">
+							The API of the _gaq object mimics a key method on JS Arrays; in the context of GA, it basically executes a command 
+							on Google's API.
+						</aside>
+					</section>
 				</section>
-
+				
 				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+					<h2>Implementation Challenges</h2>
+					<ul style="list-style-type: none;">
+						<li class="fragment">Q1. How do we get event metadata into the GA <code>_trackEvent</code> ?</li>
+						<li class="fragment">Q2. How to we send events when "the right things" happen in the UI?</li>
+						<li class="fragment">A1. HTML5 Data Attributes</li>
+						<li class="fragment">A2. jQuery (or similar)</li>
 					</ul>
+					<aside class="notes">
+						Our use cases were fairly straightforward; most of the events we want to track involve tabs, accordions, and the occasional hyperlink.  We want these
+								actions to get logged somewhere.
+					</aside>
 				</section>
-
 				<section>
-					<h2>Fantastic Ordered List</h2>
+					<section>
+					<h2>HTML5 Data Attributes</h2>
+						<h5>Actionable metadata!</h5>
+						<p>
+							<small>&#x201c;User agents must not derive any implementation behavior from these attributes or values. Specifications intended for user agents must not define these attributes to have any meaningful values.&#x201d; &#x2014; <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">WHATWG</a></small>
+						</p>
+
+					</section>
+						<section>
+							<h2>Data Attribute Example</h2>
+								<pre contentediable>
+									<code>&lt;li data-author="id:178683476">Authorsdottir,  Gerda&lt;/a&gt;
+										&lt;ul&gt;
+										  &lt;li data-record-id="123456789"&gt;Another record&lt;/li&gt;
+										  &lt;li data-record-id="234567890"&gt;Still Another Record&lt;/li&gt;
+										&lt;/ul&gt;
+									</code>
+								</pre>
+						</section>
+						<section>
+							<h2>Syntax</h2>
+							<p>Attribute names must start with <code>data-</code> and contain all lowercase letters, separated by <code>-</code> signs.  
+								In JavaScript, these names are translated by stripping off the <code>data-</code> prefix</code>, removing all following <code>-</code>
+								characters, and converting the letters following those into capitals, e.g. <code>data-bib-record</code> becomes <code>bibRecord</code>.
+							</p>
+						</section>
+						<section>
+							<h2>Even Embed Objects with JSON!</h2>
+
+							<pre contenteditable>
+							<code>
+								&lt;body data-bib-record='{
+									"localId" : 201985, 
+									"title" : "My Book", 
+									"items" : [ { 	
+											"barcode" : "314159265", 
+											"location" : "DHHILL", 
+											"status" : "Available" } 
+									] 
+									}'&gt;
+									...
+								&lt;/body&gt;
+							</code>
+							</pre>
+							<small>This can get a little silly, but you can always escape it; this is an API for machines, not people!</small>
+						</section>
+						<section>
+							<h2>jQuery API</h2>
+							<pre contenteditable>
+								<code>
+									var record = $("body").data("bibRecord");
+									// working off of above JSON example, this
+									// is a normal JS object
+									var availableItems = record.items.filter(
+									    function(x) {
+									        return x.status === 'Available';
+									    }
+									});
+									console.log("Found ", availableItems.length, " items available for ", record.localId );
+								</code>
+
+							</pre>
+						</section>
+						<section>
+							<h2>CSS Selector</h2>
+							<p>
+								You can also select elements with data-attributes with CSS attribute selector syntax: <code>a[data-author]</code> selects anchor tags where the attribute is specified.
+								Notice that you need to use the literal name of the attribute, not the "translated" version; also, per spec, you shouldn't be using these selectors to add CSS
+								styles.
+							</p>
+						</section>
+						
+					</section>
+				<section>
+					<h2>Putting it Together</h2>
+					<small>Only do this after you've planned it!</small>
 					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
+						<li>Edit markup</li>
+						<li>Add handlers for the events you want to track</li>
+						<li>Sit back and wait for the <strike>money</strike> data to roll in</li>						
 					</ol>
 				</section>
+
+				<section>
+					<h2>Edit Markup</h2>
+					<div>Before
+							<pre contentedtable>
+								<code>
+									&lt;a href="#location"&gt;Location&lt;/a&gt;
+								</code>
+							</pre>
+						</div>
+						<div>After
+							<pre contentedtable>
+								<code>
+									<a href="#location" data-ga-event="Record,Tab,Location">Location</a>
+								</code>
+							</pre>
+						</div>
+					
+					<p class="fragment">It really can be this simple!  Our new attribute contains all the metadata we need
+						to send an event of a particular type to GA.
+					</p>
+				</section>
+					 
+
 
 				<section data-markdown>
 					<script type="text/template">
@@ -355,6 +481,7 @@ function linkify( selector ) {
 				progress: true,
 				history: true,
 				center: true,
+				overview: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
