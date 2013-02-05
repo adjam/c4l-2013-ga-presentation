@@ -152,7 +152,7 @@
 					<h2>HTML5 Data Attributes</h2>
 						<h5>Actionable metadata!</h5>
 						<p>
-							<small>&#x201c;User agents must not derive any implementation behavior from these attributes or values. Specifications intended for user agents must not define these attributes to have any meaningful values.&#x201d; &#x2014; <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">WHATWG</a></small>
+							<q cite="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">User agents must not derive any implementation behavior from these attributes or values. Specifications intended for user agents must not define these attributes to have any meaningful values.</q>
 						</p>
 
 					</section>
@@ -175,42 +175,42 @@
 							</p>
 						</section>
 						<section>
-							<h2>Even Embed Objects with JSON!</h2>
+							<h2>Embed Objects with JSON</h2>
 
 							<pre contenteditable>
 							<code>
-								&lt;body data-bib-record='{
-									"localId" : 201985, 
-									"title" : "My Book", 
-									"items" : [ { 	
-											"barcode" : "314159265", 
-											"location" : "DHHILL", 
-											"status" : "Available" } 
-									] 
-									}'&gt;
-									...
-								&lt;/body&gt;
+							&lt;body data-bib-record='{
+							    "localId" : 201985, 
+							    "title" : "My Book", 
+							    "items" : [ 
+							        { 	
+							            "barcode" : "314159265", 
+							            "location" : "DHHILL", 
+							            "status" : "Available"
+							        } 
+							    ] 
+							}'&gt;
+							...
+							&lt;/body&gt;
 							</code>
 							</pre>
-							<small>This can get a little silly, but you can always escape it; this is an API for machines, not people!</small>
+							<small>This can get a little silly, but you can always escape it; remember that this is an API for machines, not people!  And not everybody has 
+								gobs of bandwidth all the time.</small>
 						</section>
 						<section>
 							<h2>jQuery API</h2>
 							<pre contenteditable>
 								<code>
+									// continuing from above
 									var record = $("body").data("bibRecord");
-									// working off of above JSON example, this
-									// is a normal JS object
-									var availableItems = record.items.filter(
-									    function(x) {
-									        return x.status === 'Available';
-									    }
-									});
-									console.log("Found ", availableItems.length, " items available for ", record.localId );
+									console.log("Found ", record.items.length, "items for",record.localId);
 								</code>
-
 							</pre>
+							<small>jQuery will silently(*) convert objects, as in the above example; so if the value of the attribute "looks like" JSON, it will be converted into an <code>object</code>; if it "looks like" a number, it will be converted into a <code>Number</code>, etc.  If you want the raw values, use <code>record.attr("data-bib-record")</code>
+							</small>
+							
 						</section>
+
 						<section>
 							<h2>CSS Selector</h2>
 							<p>
@@ -219,39 +219,158 @@
 								styles.
 							</p>
 						</section>
+				</section>
+				<section>
+					<section>
+						<h2>Putting it Together</h2>
+						<small>Only do this after you've planned it!</small>
+						<ol>
+							<li>Edit markup</li>
+							<li>Add handlers for the events you want to track</li>
+							<li>Sit back and wait for the <strike>money</strike> data to roll in</li>						
+						</ol>
+					</section>
+
+
+					<section>
+						<h2>Edit Markup</h2>
+						<div>Before
+								<pre contentedtable>
+									<code>
+										&lt;a href="#location"&gt;Location&lt;/a&gt;
+									</code>
+								</pre>
+							</div>
+							<div>After
+								<pre contentedtable>
+									<code>
+										&lt;a href="#location" data-ga-event="Record,Tab,Location"&gt;Location&lt;/a&gt;
+									</code>
+								</pre>
+							</div>
+						
+						<p class="fragment">It really can be this simple!  Our new attribute contains all the metadata we need
+							to send an event of a particular type to GA.
+						</p>
+					</section>
+
+					<section>
+						<h2>Add Handlers</h2>
+						<pre>
+							<code>
+								var _gaq = _gaq || [];
+
+								function logGAEvent(data) {
+								    // copy the data, it's a live object!
+									var evt = data.slice(0);
+								    evt.unshift("_trackEvent");
+								    _gaq.push(evt);
+								}
+
+								$(document).ready( 
+								    function() {
+								        $("*[data-ga-event]").click( 
+								            function(evt) {
+								                var data = $(this).data("gaEvent").split(",");
+								                logGAEvent(data);
+								            }
+								        );
+								    }
+							    );
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>On The Coding Style of the Above</h2>
+
+						<h6 style="text-decoration: blink;">Don't Actually Do That</h6>
+						<p>
+						<small>
+							There are a lot of ways the JavaScript you just saw could be improved; there's no error handling, the basic selector is inefficient, you can't use it to track events on elements that are not present when the page is loaded, and the code style does not lend itself to testing.  So don't do it like that!
+						</small>
+						</p>
+					<p class="fragment red">
+						Please also don't use <code>text-decoration: blink</code>
+					</p>
+					</section>
+				</section>
+				<section>
+					<section>
+					<h2>Explorations</h2>
+					<ul>
+						<li class="fragment">Testing and Debugging</li>
+						<li class="fragment">What if you don't have full control over the markup?</li>
+						<li class="fragment">Tweak what's tracked</li>
+						<li class="fragment">Selector Strategies</li>
+						<li class="fragment">AJAX Content</li>
+					</ul>
+					</section>
+					<section>
+						<h2>Troubleurebuking, Debugging, and Testing</h2>
+						<ul>
+							<li>Be proactive: events take a while to show up in your GA dashboard</li>
+							<li>Don't be like me; have a JavaScript testing framework set up before you start, and write some tests.</li>
+							<li>Make friends with your browser's dev tools/debugger.</li>
+							<li>load <code>ga_debug.js</code> instead of <code>ga.js</code> during development (or use Chrome with the Google Analytics Debugger extension from the Web Store; lets you dynamically select which version you load, very useful for working with a live site)</li>
+						</ul>
+						<p>Debuggers may prove challenging for the newbie, but learning how to use them is worth the investment if you're interested
+							 in web development.</p>
+					</section>
+					<section>
+						<h2>When it's not your markup</h2>
+						<p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us the strategy for loading external JavaScript pages 
+						in our Summon instance.
+						</p>
+						<p>You probably won't be able to track everything you want.  You may also not be able to come up with selectors that match exactly 
+							the elements you want to track, <em>especially</em> if you don't have any insight into how the HTML is generated.  That said, the only major change required
+							from the illustration above is to programmatically attach your event data to the elements you want to track instead of using the HTML5 data attributes.
+						</p>
 						
 					</section>
-				<section>
-					<h2>Putting it Together</h2>
-					<small>Only do this after you've planned it!</small>
-					<ol>
-						<li>Edit markup</li>
-						<li>Add handlers for the events you want to track</li>
-						<li>Sit back and wait for the <strike>money</strike> data to roll in</li>						
-					</ol>
+					<section>
+						<h2>Tracking Tweaks</h2>
+						<p>Say you've noticed (by direct observation) users idly clicking to cycle through a set of tabs, but you only want to count the 
+							first click on each page as a "use".
+					     </p>
+					     <pre>
+					     	<code>
+					     	// pass in the element that has the data attribute on it
+					     	function logGAEvent(el,data) {
+					     	    if ( !el._tracked ) {
+					     	    	if ( !data[0] === '_trackEvent' ) {
+					     	            data.unshift("_trackEvent");
+					     	        }
+					     	        el._tracked = _gaq.push(data)
+					     	    }
+					     	}
+					     </code>
+					     </pre>
+					     <p>You can get even fancier with this, especially if you embed JSON or make use of other data- attributes.</p>
+					</section>
+					<section>
+						<h2>Selector Strategy</h2>
+						<ul>
+							<li><code>*[data-ga-event]</code> is slow, but matches all elements with tracking data</li>
+							<li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can easily disable tracking for some elements should you need to.</li>
+						</ul>
+					</small>
+					</section>
+					<section>
+						<h2>Tracking Events in AJAH Content</h2>
+						<p>jQuery to the rescue!
+							<pre>
+								<code>
+							// our catalog loads transformed EAD XML via XHR when users click on the content tab
+							$("#contents").on("click" ".EAD_daolink", function(evt) {
+							    logGAEvent($(this), ['URL','Digitized Content','CCC']);
+							});
+						       </code>
+					    </pre>
+					</p>
+					</section>
 				</section>
 
-				<section>
-					<h2>Edit Markup</h2>
-					<div>Before
-							<pre contentedtable>
-								<code>
-									&lt;a href="#location"&gt;Location&lt;/a&gt;
-								</code>
-							</pre>
-						</div>
-						<div>After
-							<pre contentedtable>
-								<code>
-									<a href="#location" data-ga-event="Record,Tab,Location">Location</a>
-								</code>
-							</pre>
-						</div>
-					
-					<p class="fragment">It really can be this simple!  Our new attribute contains all the metadata we need
-						to send an event of a particular type to GA.
-					</p>
-				</section>
+
 					 
 
 
