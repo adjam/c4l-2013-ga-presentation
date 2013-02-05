@@ -1,479 +1,517 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>Google Analytics, Event Tracking and Discovery Tools</title>
+        <title>Google Analytics, Event Tracking and Discovery Tools</title>
 
-		<meta name="description" content="Being A Presentation To The Aseembled Body In Chicago">
-		<meta name="author" content="Emily Lynema, Adam Constabaris">
+        <meta name="description" content="Being A Presentation To The Aseembled Body In Chicago">
+        <meta name="author" content="Emily Lynema, Adam Constabaris">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-				<section>
-					<h2>Google Analytics, Event Tracking and Discovery Tools</h2>
-					<h5>Going Beyond Pageviews</h5>
-					<small>
-					<p>
-						Emily Lynema, Associate Head, IT NCSU Libraries
-					</p>						
-					<p>
-						Adam Constabaris, Singe de Code, NCSU Libraries
-					</p>
-				</small>
-				</section>
+                <section>
+                    <h2>Google Analytics, Event Tracking and Discovery Tools</h2>
+                    <h5>Going Beyond Pageviews</h5>
+                    <small>
+                    <p>
+                        Emily Lynema, Associate Head, IT NCSU Libraries
+                    </p>                        
+                    <p>
+                        Adam Constabaris, Singe de Code, NCSU Libraries
+                    </p>
+                </small>
+                </section>
 
-				<section>
-					<h2>Overview</h2>
-					<p>
-						Google Analytics can be used to track not only pageviews, but in-page events, allowing you to understand more
-						about how your site is being used.
-					</p>
+                <section>
+                    <h2>Overview</h2>
+                    <p>
+                        Google Analytics can be used to track not only pageviews, but in-page events, allowing you to understand more
+                        about how your site is being used.
+                    </p>
 
-					<aside class="notes">
-						This is how you embed speaker notes.  Hit 's' to open 'em up.
-					</aside>
-				</section>
+                    <aside class="notes">
+                        This is how you embed speaker notes.  Hit 's' to open 'em up.
+                    </aside>
+                </section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+                <!-- Example of nested vertical slides -->
+                <section>
+                    <section>
+                        <h2>Event Tracking Use Cases</h2>
+                        <h5>Hidden or externally loaded (AJAX) content</h5>
+                        <br />
+                         <a class="image" href="images/full-record.png" target="_blank">
+                            <img width="320" height="185" src="images/full-record-thumb.png" alt="Full Record Preview" />
+                        </a>
+                        <p>
+                            Some content on the page is hidden when the page loads; users access that content 
+                            by following a link.  Other content is not loaded initally, but is on user demand (as in the tabs).
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Use Cases (cont.)</h2>
+                        <h5>Expandable Widgets, External Links</h5>
+                        <a class="image" href="images/catalog-results.png" target="_blank">
+                            <img width="320" height="183" src="images/catalog-results-thumb.png" alt="Results Page Preview" />
+                        </a>
+                        <p>Users of our site can also expand and collapse facets without reloading the page ("accordion" widgets).  Sometimes, they
+                        follow links to externally hosted content, too!</p>
+                    </section>
+                   
+                </section>
 
-			
-				<section>
-					<section>
-						<h2>The Plumbing</h2>
-						<p class="framment">
-							Of course it involves jQuery!
-						</p>
-						<p class="fragment">
-							It doesn't <em>have</em> to, though.
-						</p>
-						<p class="fragment">
-							<a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking?hl=ja">https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking?hl=ja</a>
-						</p>
-					</section>
-			
-					<section>
-						<h2>Background</h2>
-						<p>
-							When the Google Analytics JavaScript is loaded, it embeds a "tracker" object 
-							on your page, which you can then <a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApi_gaq">interact with</a>
-						 	to track events.
-						</p>
+            
+                <section>
+                    <section>
+                        <h2>The Plumbing</h2>
+                        <p class="framment">
+                            Of course it involves jQuery!
+                        </p>
+                        <p class="fragment">
+                            It doesn't <em>have</em> to, but that's how we did it.
+                        </p>
+                    </section>
+            
+                    <section>
+                        <h2>Background</h2>
+                        <p>
+                            When the Google Analytics JavaScript is loaded, it embeds a "tracker" object 
+                            on your page, which you can then <a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApi_gaq">interact with</a>
+                            to track events.
+                        </p>
 
-						<pre contenteditable>
-							<code>
-								// safely initialize _gaq; if GA loads after your code,
-								// any events already in the queue will be sent to the Goog.
-								var _gaq = _gaq || [];
-								...
+                        <pre>
+                            <code contenteditable>
+// safely initialize _gaq; if GA loads after your code,
+// any events already in the queue will be sent to the Goog.
+var _gaq = _gaq || [];
+...
+_gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optional_eventValue ]);
+                            </code>
+                        </pre>
+                        <aside class="notes">
+                            The API of the _gaq object mimics a key method on JS Arrays; in the context of GA, it basically executes a command 
+                            on Google's API.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Event Overview</h2>
+                        <p>
+                            To track an event of a given type,  you need a <em>category</em> and an <em>action</em>.  Optionally, you can add a <em>label</em> and, if you add the label, you may also add a <em>value</em>.  The API
+                            and GA don't really care what values you use for these things, so organizing them is up to you.
+                        </p>
+                </section>
+            </section>
+                    
+                <section>
+                    <h2>Implementation Challenges</h2>
+                    <ul style="list-style-type: none;">
+                        <li class="fragment">Q1. How do we get event metadata into the GA <code>_trackEvent</code> ?</li>
+                        <li class="fragment">Q2. How to we send events when "the right things" happen in the UI?</li>
+                        <li class="fragment">A1. HTML5 Data Attributes</li>
+                        <li class="fragment">A2. jQuery (or similar)</li>
+                    </ul>
+                    <aside class="notes">
+                        Our use cases were fairly straightforward; most of the events we want to track involve tabs, accordions, and the occasional hyperlink.  We want these
+                                actions to get logged somewhere.
+                    </aside>
+                </section>
+                <section>
+                    <section>
+                    <h2>HTML5 Data Attributes</h2>
+                        <h5>Actionable metadata!</h5>
+                        <figure>
+                            <blockquote cite="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">User agents must not derive any implementation behavior from these attributes or values. Specifications intended for user agents must not define these attributes to have any meaningful values.</blockquote>
+                            <figcaption><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">WHATWG</a> (2013-02-05)</figcaption>
+                        </figure>
 
-								_gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optional_eventValue ]);
-							</code>
-						</pre>
-						<aside class="notes">
-							The API of the _gaq object mimics a key method on JS Arrays; in the context of GA, it basically executes a command 
-							on Google's API.
-						</aside>
-					</section>
-				</section>
-				
-				<section>
-					<h2>Implementation Challenges</h2>
-					<ul style="list-style-type: none;">
-						<li class="fragment">Q1. How do we get event metadata into the GA <code>_trackEvent</code> ?</li>
-						<li class="fragment">Q2. How to we send events when "the right things" happen in the UI?</li>
-						<li class="fragment">A1. HTML5 Data Attributes</li>
-						<li class="fragment">A2. jQuery (or similar)</li>
-					</ul>
-					<aside class="notes">
-						Our use cases were fairly straightforward; most of the events we want to track involve tabs, accordions, and the occasional hyperlink.  We want these
-								actions to get logged somewhere.
-					</aside>
-				</section>
-				<section>
-					<section>
-					<h2>HTML5 Data Attributes</h2>
-						<h5>Actionable metadata!</h5>
-						<p>
-							<q cite="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">User agents must not derive any implementation behavior from these attributes or values. Specifications intended for user agents must not define these attributes to have any meaningful values.</q>
-						</p>
+                    </section>
+                        <section>
+                            <h2>Data Attribute Example</h2>
+                                <pre>
+                                    <code contenteditable>
+&lt;a data-author="id:178683476" href="/authors/1786834376">Authorsdottir,  Gerda&lt;/a&gt;
+&lt;ul&gt;
+    &lt;li data-record-id="123456789"&gt;Another record&lt;/li&gt;
+    &lt;li data-record-id="234567890"&gt;Still Another Record&lt;/li&gt;
+&lt;/ul&gt;
+                                    </code>
+                                </pre>
+                        </section>
+                        <section>
+                            <h2>Syntax</h2>
+                            <p>Attribute names must start with <code>data-</code> and contain all lowercase letters, separated by <code>-</code> signs.  
+                                In JavaScript, these names are translated by stripping off the <code>data-</code> prefix</code>, removing all following <code>-</code>
+                                characters, and converting the letters following those into capitals, e.g. <code>data-bib-record</code> becomes <code>bibRecord</code>.
+                            </p>
+                        </section>
+                        <section>
+                            <h2>Embed Objects with JSON</h2>
 
-					</section>
-						<section>
-							<h2>Data Attribute Example</h2>
-								<pre contentediable>
-									<code>&lt;li data-author="id:178683476">Authorsdottir,  Gerda&lt;/a&gt;
-										&lt;ul&gt;
-										  &lt;li data-record-id="123456789"&gt;Another record&lt;/li&gt;
-										  &lt;li data-record-id="234567890"&gt;Still Another Record&lt;/li&gt;
-										&lt;/ul&gt;
-									</code>
-								</pre>
-						</section>
-						<section>
-							<h2>Syntax</h2>
-							<p>Attribute names must start with <code>data-</code> and contain all lowercase letters, separated by <code>-</code> signs.  
-								In JavaScript, these names are translated by stripping off the <code>data-</code> prefix</code>, removing all following <code>-</code>
-								characters, and converting the letters following those into capitals, e.g. <code>data-bib-record</code> becomes <code>bibRecord</code>.
-							</p>
-						</section>
-						<section>
-							<h2>Embed Objects with JSON</h2>
+                            <pre>
+                            <code contenteditable>
+&lt;body data-bib-record='{
+    "localId" : 201985, 
+    "title" : "My Book", 
+    "items" : [ 
+      {     
+        "barcode" : "314159265", 
+        "location" : "DHHILL", 
+        "status" : "Available"
+      } 
+    ] 
+}'&gt;
+...
+&lt;/body&gt;
+                            </code>
+                            </pre>
+                            <small>This can get *cough* a little silly, but you can always escape it; remember that this is an API for machines, not people!  However, not everybody has 
+                                gobs of bandwidth all the time.</small>
+                        </section>
+                        <section>
+                            <h2>jQuery API</h2>
+                            <pre>
+                                <code contenteditable>
+// continuing from above
+var record = $("body").data("bibRecord");
+console.log("Found ", record.items.length, "items for",record.localId);
+                                </code>
+                            </pre>
+                            <p style="font-size: 75%;">jQuery will silently(*) convert values, as shown in this example.  Things that "look like" JSON or numeric data will be returned as the appropriate type by the <code>.data()</code> function.
+                                <br />
+                                If you want the raw values, use <code>record.attr("data-bib-record")</code>
+                            </p>
+                            
+                        </section>
 
-							<pre contenteditable>
-							<code>
-							&lt;body data-bib-record='{
-							    "localId" : 201985, 
-							    "title" : "My Book", 
-							    "items" : [ 
-							        { 	
-							            "barcode" : "314159265", 
-							            "location" : "DHHILL", 
-							            "status" : "Available"
-							        } 
-							    ] 
-							}'&gt;
-							...
-							&lt;/body&gt;
-							</code>
-							</pre>
-							<small>This can get a little silly, but you can always escape it; remember that this is an API for machines, not people!  And not everybody has 
-								gobs of bandwidth all the time.</small>
-						</section>
-						<section>
-							<h2>jQuery API</h2>
-							<pre contenteditable>
-								<code>
-									// continuing from above
-									var record = $("body").data("bibRecord");
-									console.log("Found ", record.items.length, "items for",record.localId);
-								</code>
-							</pre>
-							<small>jQuery will silently(*) convert objects, as in the above example; so if the value of the attribute "looks like" JSON, it will be converted into an <code>object</code>; if it "looks like" a number, it will be converted into a <code>Number</code>, etc.  If you want the raw values, use <code>record.attr("data-bib-record")</code>
-							</small>
-							
-						</section>
-
-						<section>
-							<h2>CSS Selector</h2>
-							<p>
-								You can also select elements with data-attributes with CSS attribute selector syntax: <code>a[data-author]</code> selects anchor tags where the attribute is specified.
-								Notice that you need to use the literal name of the attribute, not the "translated" version; also, per spec, you shouldn't be using these selectors to add CSS
-								styles.
-							</p>
-						</section>
-				</section>
-				<section>
-					<section>
-						<h2>Putting it Together</h2>
-						<small>Only do this after you've planned it!</small>
-						<ol>
-							<li>Edit markup</li>
-							<li>Add handlers for the events you want to track</li>
-							<li>Sit back and wait for the <strike>money</strike> data to roll in</li>						
-						</ol>
-					</section>
-
-
-					<section>
-						<h2>Edit Markup</h2>
-						<div>Before
-								<pre contentedtable>
-									<code>
-										&lt;a href="#location"&gt;Location&lt;/a&gt;
-									</code>
-								</pre>
-							</div>
-							<div>After
-								<pre contentedtable>
-									<code>
-										&lt;a href="#location" data-ga-event="Record,Tab,Location"&gt;Location&lt;/a&gt;
-									</code>
-								</pre>
-							</div>
-						
-						<p class="fragment">It really can be this simple!  Our new attribute contains all the metadata we need
-							to send an event of a particular type to GA.
-						</p>
-					</section>
-
-					<section>
-						<h2>Add Handlers</h2>
-						<pre>
-							<code>
-								var _gaq = _gaq || [];
-
-								function logGAEvent(data) {
-								    // copy the data, it's a live object!
-									var evt = data.slice(0);
-								    evt.unshift("_trackEvent");
-								    _gaq.push(evt);
-								}
-
-								$(document).ready( 
-								    function() {
-								        $("*[data-ga-event]").click( 
-								            function(evt) {
-								                var data = $(this).data("gaEvent").split(",");
-								                logGAEvent(data);
-								            }
-								        );
-								    }
-							    );
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h2>On The Coding Style of the Above</h2>
-
-						<h6 style="text-decoration: blink;">Don't Actually Do That</h6>
-						<p>
-						<small>
-							There are a lot of ways the JavaScript you just saw could be improved; there's no error handling, the basic selector is inefficient, you can't use it to track events on elements that are not present when the page is loaded, and the code style does not lend itself to testing.  So don't do it like that!
-						</small>
-						</p>
-					<p class="fragment red">
-						Please also don't use <code>text-decoration: blink</code>
-					</p>
-					</section>
-				</section>
-				<section>
-					<section>
-					<h2>Explorations</h2>
-					<ul>
-						<li class="fragment">Testing and Debugging</li>
-						<li class="fragment">What if you don't have full control over the markup?</li>
-						<li class="fragment">Tweak what's tracked</li>
-						<li class="fragment">Selector Strategies</li>
-						<li class="fragment">AJAX Content</li>
-					</ul>
-					</section>
-					<section>
-						<h2>Troubleurebuking, Debugging, and Testing</h2>
-						<ul>
-							<li>Be proactive: events take a while to show up in your GA dashboard</li>
-							<li>Don't be like me; have a JavaScript testing framework set up before you start, and write some tests.</li>
-							<li>Make friends with your browser's dev tools/debugger.</li>
-							<li>load <code>ga_debug.js</code> instead of <code>ga.js</code> during development (or use Chrome with the Google Analytics Debugger extension from the Web Store; lets you dynamically select which version you load, very useful for working with a live site)</li>
-						</ul>
-						<p>Debuggers may prove challenging for the newbie, but learning how to use them is worth the investment if you're interested
-							 in web development.</p>
-					</section>
-					<section>
-						<h2>When it's not your markup</h2>
-						<p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us the strategy for loading external JavaScript pages 
-						in our Summon instance.
-						</p>
-						<p>You probably won't be able to track everything you want.  You may also not be able to come up with selectors that match exactly 
-							the elements you want to track, <em>especially</em> if you don't have any insight into how the HTML is generated.  That said, the only major change required
-							from the illustration above is to programmatically attach your event data to the elements you want to track instead of using the HTML5 data attributes.
-						</p>
-						
-					</section>
-					<section>
-						<h2>Tracking Tweaks</h2>
-						<p>Say you've noticed (by direct observation) users idly clicking to cycle through a set of tabs, but you only want to count the 
-							first click on each page as a "use".
-					     </p>
-					     <pre>
-					     	<code>
-					     	// pass in the element that has the data attribute on it
-					     	function logGAEvent(el,data) {
-					     	    if ( !el._tracked ) {
-					     	    	if ( !data[0] === '_trackEvent' ) {
-					     	            data.unshift("_trackEvent");
-					     	        }
-					     	        el._tracked = _gaq.push(data)
-					     	    }
-					     	}
-					     </code>
-					     </pre>
-					     <p>You can get even fancier with this, especially if you embed JSON or make use of other data- attributes.</p>
-					</section>
-					<section>
-						<h2>Selector Strategy</h2>
-						<ul>
-							<li><code>*[data-ga-event]</code> is slow, but matches all elements with tracking data</li>
-							<li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can easily disable tracking for some elements should you need to.</li>
-						</ul>
-					</small>
-					</section>
-					<section>
-						<h2>Tracking Events in AJAH Content</h2>
-						<p>jQuery to the rescue!
-							<pre>
-								<code>
-							// our catalog loads transformed EAD XML via XHR when users click on the content tab
-							$("#contents").on("click" ".EAD_daolink", function(evt) {
-							    logGAEvent($(this), ['URL','Digitized Content','CCC']);
-							});
-						       </code>
-					    </pre>
-					</p>
-					</section>
-				</section>
+                        <section>
+                            <h2>CSS Selector</h2>
+                            <p>
+                                You can also select elements with data-attributes with CSS attribute selector syntax: <code>a[data-author]</code> selects anchor tags where the attribute is specified.
+                                Notice that you need to use the literal name of the attribute, not the "translated" version; also, per spec, you shouldn't be using these selectors to add CSS
+                                styles.
+                            </p>
+                        </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Putting it Together</h2>
+                        <small>Only do this after you've planned it!</small>
+                        <ol>
+                            <li>Edit markup</li>
+                            <li>Add handlers for the events you want to track</li>
+                            <li>Sit back and wait for the <strike>money</strike> data to roll in</li>                       
+                        </ol>
+                    </section>
 
 
-					 
+                    <section>
+                        <h2>Edit Markup</h2>
+                        <div>Before
+                                <pre contentedtable>
+                                    <code>
+&lt;a href="#location"&gt;Location&lt;/a&gt;
+                                    </code>
+                                </pre>
+                            </div>
+                            <div>After
+                                <pre contentedtable>
+                                    <code>
+&lt;a href="#location" data-ga-event="Record,Tab,Location"&gt;Location&lt;/a&gt;
+                                    </code>
+                                </pre>
+                            </div>
+                        
+                        <p class="fragment">It really can be this simple!  Our new attribute contains all the metadata we need
+                            to send an event of a particular type to GA.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Add Handlers</h2>
+                        <pre style="font-size: 45%;">
+                            <code contenteditable>
+var _gaq = _gaq || [];
+
+function logGAEvent(data) {
+    data.unshift("_trackEvent");
+    _gaq.push(data);
+}
+
+$(document).ready( 
+    function() {
+        $("*[data-ga-event]").click( 
+            function(evt) {
+                var data = $(this).data("gaEvent").split(",");
+                logGAEvent(data);
+            }
+        );
+    }
+);
+                </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h2>On The Coding Style of the Above</h2>
+
+                        <h6 style="text-decoration: blink;">Don't Actually Do That</h6>
+                        <p>
+                        <small>
+                            There are a lot of ways the JavaScript you just saw could be improved; there's no error handling, the basic selector is inefficient, you can't use it to track events on elements that are not present when the page is loaded, and the code style does not lend itself to testing.  So don't do it like that!
+                        </small>
+                        </p>
+                    <p class="fragment red">
+                        Please also don't use <code>text-decoration: blink</code>
+                    </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                    <h2>Explorations</h2>
+                    <ul>
+                        <li class="fragment">Testing and Debugging</li>
+                        <li class="fragment">What if you don't have full control over the markup?</li>
+                        <li class="fragment">Tweak what's tracked</li>
+                        <li class="fragment">Selector Strategies</li>
+                        <li class="fragment">AJAX Content</li>
+                    </ul>
+                    </section>
+                    <section>
+                        <h2>Troublerebuking, Debugging, and Testing</h2>
+                        <ul >
+                            <li>Be proactive: events take a while to show up in your GA dashboard</li>
+                            <li>Don't be like me; have a JavaScript testing framework set up before you start, and write some tests.</li>
+                            <li>Make friends with your browser's dev tools/debugger.</li>
+                            <li>load <code>ga_debug.js</code> instead of <code>ga.js</code> during development (output goes to console)</li>
+                        </ul>
+                        
+                        
+                            
+                            
+                        <aside class="notes">
+                            <p>If you're on Chrome, there's the "Google Analytics Debugger" extension that lets you select which version of the
+                            JS is loaded in your browser.  This is very useful for working on a live site.</p>
+                            <p>Debuggers may prove challenging for the newbie, but learning how to use them is worth the investment if you're interested
+                             in web development.</p>
+                        </aside>
+                    </section>
+                    
+                        <section>
+                        <h2>When it's not your markup</h2>
+                        <p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us the strategy for loading external JavaScript pages 
+                        in our Summon instance.
+                        </p>
+                        <small>
+                        <ul>
+                            <li>You probably won't be able to track everything you want.</li>
+                            <li><em>Especially</em> if you don't have any insight into how the HTML is generated.</li>
+                        </ul>
+                        <p>
+                            The only major change required
+                            from the illustration above is to programmatically attach your event data to the elements you want to track instead of using the HTML5 data attributes.
+
+                        </p>
+                    </small>
+                        </section>
+                        <section>
+                            <h2>When It's Not Your Markup (cont.)</h2>
+                            <pre>
+                                <code contenteditable>
+// from our custom summon-analytics.js
+$("#pageNavigation a[href^='/search']").click( 
+    function(evt) {
+        var link = jQuery(evt.target);
+        var lt = $.trim(link.text());
+        if ( lt == "Next" ) {
+            lt = "" + (thisPage +1);
+        } else if ( lt == "Prev" ) {
+            lt = "" + (thisPage -1);
+        }
+        logEvent("Paging", "Page", lt);
+    }
+);
+        </code>
+    </pre>
+    <p>Not so much fun, but hey, it works.</p>
+</section>
+                    
+                    <section>
+                        <h2>Tracking Tweaks</h2>
+                        <p>Say you've noticed (by direct observation) users idly clicking to cycle through a set of tabs, but you only want to count the 
+                            first click on each page as a "use".
+                         </p>
+                         <pre>
+                            <code>
+// pass in the element that has the data attribute on it
+function logGAEvent(el,data) {
+    if ( !el._tracked ) {
+        if ( data[0] !== '_trackEvent' ) {
+            data.unshift("_trackEvent");
+        }
+        el._tracked = _gaq.push(data);
+    }
+}
+</code>
+                         </pre>
+                         <p>You can get even fancier with this, especially if you embed JSON or make use of other data- attributes.</p>
+                    </section>
+                    <section>
+                        <h2>Selector Strategy</h2>
+                        <ul>
+                            <li><code>*[data-ga-event]</code> is slow, but matches all elements with tracking data</li>
+                            <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can easily disable tracking for some elements should you need to.</li>
+                        </ul>
+                    </small>
+                    </section>
+                    <section>
+                        <h2>Tracking Events in AJAH(*) Content</h2>
+                        <p>jQuery to the rescue!</p>
+                            <pre>
+                                <code contenteditable>
+// our catalog loads transformed EAD XML via XHR when users click on the content tab
+$("#contents").on("click", ".EAD_daolink", function(evt) {
+    logGAEvent($(this), ['URL','Digitized Content','CCC']);
+});
+                            </code>
+                        </pre>
+                        <p>jQuery lets you specify handlers for events for elements that don't exist yet, by (essentially) listening on an (existing) element that (will) contain them.
+                            </p>
+                    
+                    </section>
+                </section>
+                <section>
+                    <h2>Links</h2>
+                    <ul>
+                        <li>Official GA Docs
+                            <ul>
+                                <li><a href="https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking">Event Tracking</a></li>
+                                <li><a href="https://developers.google.com/analytics/resources/articles/gaTrackingTroubleshooting">Troubleshooting Guide</a></li>
+                            </ul>
+                        </li>
+                         <li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">data-* attributes (WHATWG)</a></li>
+                        <li><a href="http://api.jquery.com/data/">jQuery.data() API</a></li>
+                    </ul>
+                </section>
 
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
 
-							<section data-markdown>
-							  ## Markdown support
+                     
 
-							  For those of you who like that sort of thing.
-							  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-							</section>
-					</script>
-				</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
+                <section id="transitions">
+                    <h2>Transition Styles</h2>
+                    <p>
+                        You can select from different transitions, like: <br>
+                        <a href="?transition=cube#/transitions">Cube</a> -
+                        <a href="?transition=page#/transitions">Page</a> -
+                        <a href="?transition=concave#/transitions">Concave</a> -
+                        <a href="?transition=zoom#/transitions">Zoom</a> -
+                        <a href="?transition=linear#/transitions">Linear</a> -
+                        <a href="?transition=fade#/transitions">Fade</a> -
+                        <a href="?transition=none#/transitions">None</a> -
+                        <a href="?#/transitions">Default</a>
+                    </p>
+                </section>
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+                <section id="themes">
+                    <h2>Themes</h2>
+                    <p>
+                        Reveal.js comes with a few themes built in: <br>
+                        <a href="?theme=sky#/themes">Sky</a> -
+                        <a href="?theme=beige#/themes">Beige</a> -
+                        <a href="?theme=simple#/themes">Simple</a> -
+                        <a href="?theme=serif#/themes">Serif</a> -
+                        <a href="?theme=night#/themes">Night</a> -
+                        <a href="?#/themes">Default</a>
+                    </p>
+                    <p>
+                        <small>
+                            * Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+                        </small>
+                    </p>
+                </section>
 
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This lets you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#" class="image navigate-next">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
-						</a>
-					</section>
-				</section>
+                <section>
+                    <section data-state="alert">
+                        <h2>Global State</h2>
+                        <p>
+                            Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+                            will be added as a class to the document element when the slide is open. This lets you
+                            apply broader style changes, like switching the background.
+                        </p>
+                        <a href="#" class="image navigate-down">
+                            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                        </a>
+                    </section>
+                    <section data-state="blackout">
+                        <h2>"blackout"</h2>
+                        <a href="#" class="image navigate-down">
+                            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                        </a>
+                    </section>
+                    <section data-state="soothe">
+                        <h2>"soothe"</h2>
+                        <a href="#" class="image navigate-next">
+                            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
+                        </a>
+                    </section>
+                </section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
+                <section data-state="customevent">
+                    <h2>Custom Events</h2>
+                    <p>
+                        Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+                    </p>
+                    <pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
+    console.log( '"customevent" has fired' );
 } );
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
+                <section>
+                    <h2>Clever Quotes</h2>
+                    <p>
+                        These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        The nice thing about standards is that there are so many to choose from</q> and block:
+                    </p>
+                    <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+                        reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+                    </blockquote>
+                </section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
+                <section>
+                    <h2>Pretty Code</h2>
+                    <pre><code contenteditable>
 function linkify( selector ) {
   if( supports3DTransforms ) {
 
@@ -488,136 +526,136 @@ function linkify( selector ) {
     };
   }
 }
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+                    </code></pre>
+                    <p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+                </section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+                <section>
+                    <h2>Intergalactic Interconnections</h2>
+                    <p>
+                        You can link between slides internally,
+                        <a href="#/2/3">like this</a>.
+                    </p>
+                </section>
 
-				<section>
-					<section>
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
+                <section>
+                    <section>
+                        <h2>Fragmented Views</h2>
+                        <p>Hit the next arrow...</p>
+                        <p class="fragment">... to step through ...</p>
+                        <ol>
+                            <li class="fragment"><code>any type</code></li>
+                            <li class="fragment"><em>of view</em></li>
+                            <li class="fragment"><strong>fragments</strong></li>
+                        </ol>
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
+                        <aside class="notes">
+                            This slide has fragments which are also stepped through in the notes window.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Fragment Styles</h2>
+                        <p>There's a few styles of fragments, like:</p>
+                        <p class="fragment grow">grow</p>
+                        <p class="fragment shrink">shrink</p>
+                        <p class="fragment roll-in">roll-in</p>
+                        <p class="fragment fade-out">fade-out</p>
+                        <p class="fragment highlight-red">highlight-red</p>
+                        <p class="fragment highlight-green">highlight-green</p>
+                        <p class="fragment highlight-blue">highlight-blue</p>
+                    </section>
+                </section>
 
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+                <section>
+                    <h2>Spectacular image!</h2>
+                    <a class="image" href="http://lab.hakim.se/meny/" target="_blank">
+                        <img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
+                    </a>
+                </section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+                <section>
+                    <h2>Export to PDF</h2>
+                    <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
+                    <iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+                    <script>
+                        document.getElementById('slideshare').attributeName = 'allowfullscreen';
+                    </script>
+                </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
+                <section>
+                    <h2>Take a Moment</h2>
+                    <p>
+                        Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
+                        during a presentation.
+                    </p>
+                </section>
 
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
+                <section>
+                    <h2>Stellar Links</h2>
+                    <ul>
+                        <li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+                        <li><a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a></li>
+                        <li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>It's free</h2>
-					<p>
-						reveal.js and <a href="http://www.rvl.io">rvl.io</a> are entirely free but if you'd like to support the projects you can donate below.
-						Donations will go towards hosting and domain costs.
-					</p>
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="cmd" value="_donations">
-						<input type="hidden" name="business" value="hakim.elhattab@gmail.com">
-						<input type="hidden" name="lc" value="US">
-						<input type="hidden" name="item_name" value="reveal.js / rvl.io">
-						<input type="hidden" name="no_note" value="0">
-						<input type="hidden" name="currency_code" value="USD">
-						<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-					</form>
-				</section>
+                <section>
+                    <h2>It's free</h2>
+                    <p>
+                        reveal.js and <a href="http://www.rvl.io">rvl.io</a> are entirely free but if you'd like to support the projects you can donate below.
+                        Donations will go towards hosting and domain costs.
+                    </p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_donations">
+                        <input type="hidden" name="business" value="hakim.elhattab@gmail.com">
+                        <input type="hidden" name="lc" value="US">
+                        <input type="hidden" name="item_name" value="reveal.js / rvl.io">
+                        <input type="hidden" name="no_note" value="0">
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    </form>
+                </section>
 
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
+                <section>
+                    <h1>THE END</h1>
+                    <h3>BY Hakim El Hattab / hakim.se</h3>
+                </section>
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
 
-		<script>
+        <script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-				overview: true,
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+                overview: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
 
-		</script>
+        </script>
 
-	</body>
+    </body>
 </html>
