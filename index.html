@@ -327,22 +327,15 @@ $(document).ready(
                 <section>
                         <h2>Troublerebuking, Debugging, and Testing</h2>
                         <ul >
-                            <li>Be proactive: events take a while to show up in your GA dashboard</li>
-                            <li>Don't be like me; have a JavaScript testing framework set up before you start, and write some tests.</li>
+                            <li>Be proactive<!/li>
+                            <li>Emphasis:  don't be like me; plan for testability up front.</li>
                             <li>Make friends with your browser's dev tools/debugger.</li>
-                            <li>load <code>ga_debug.js</code> instead of <code>ga.js</code> during development (output goes to console)</li>
                         </ul>
-                        <aside class="notes">
-                            <p>If you're on Chrome, there's the "Google Analytics Debugger" extension that lets you select which version of the
-                            JS is loaded in your browser.  This is very useful for working on a live site.</p>
-                            <p>Debuggers may prove challenging for the newbie, but learning how to use them is worth the investment if you're interested
-                             in web development.</p>
-                        </aside>
                 </section>
                 <section>
                     <h2>Working With a Net</h2>
                     <p>
-                        We found that it can take up to a day for an event to show up in the GA dashboard, so "fire it up and see if it works" is a time consuming strategy.
+                        We found that it can take up to a day for an event to show up in the GA dashboard, so "fire it up and see if it works" is a time consuming testing strategy.
                     </p>
                     <ul>
                         <li>Write a separate function that actually does the logging, rather than doing it inline.</li>
