@@ -183,20 +183,20 @@
                 		 	<p class="fragment">Tracking LOTS of things</p>
                 			<p class="fragment">* But not all of them for very long</p><br />
                 			<p class="fragment">This is the time for planning. How to categorize events to achieve the desired reports?</p>
-                			
-                		</ul>
                 	</section>
+                </section>
+                <section>
                 	<section>
             			<h2>What are we tracking?</h2>
             			<ul>
             				<li>Results List clicks</li>
             				<li>Facet expand / close</li>
             				<li>Facet checkboxes</li>
-            				<li>Expand Search (send search to TRLN / WorldCat)</li>
+            				<li>Send search out to TRLN / WorldCat / Summon</li>
             				<li>Full record tools</li>
             				<li>Full record tabs</li>
             				<li>Location tab clicks (request, browse, full text)</li>
-            				<li>External URLs elsewhere on the full record (finding aids, full text)</li>
+            				<li>External URLs on the full record (finding aids, full text)</li>
             				<li>Browse (shelf browse / subject browse)</li>
             			</ul>
             		</section>
@@ -216,6 +216,11 @@
             			<p>Online | Available | New</p>
             		</section>
             		<section>
+            			<h2>Category: Expand Search</h2>
+            			<small>Send search to other discovery tools</small>
+            			<p>TRLN | WorldCat | Summon</p>
+            		</section>
+            		<section>
             			<h2>Category: Tools</h2>
             			<small>Toolstrip actions on the full record</small>
             			<p>Request | Text | Email | Print | Refworks | Google Preview | Add List</p>
@@ -225,17 +230,23 @@
             			<small>Tab clicks on the full record</small>
             			<p>Location | Details | Contents | MARC | Preview | History</p>
             		</section>
-            		
             		<section>
-            			<h2>Category: URL</h2>
-            			<small>Assorted external URLs on the full record</small>
-            			<p>FullText | FindingAid | DigitizedContent</p>
+            			<h2>Category: Location tab</h2>
+            			<small>Clicks within the Location tab</small>
+            			<p>Browse Shelf | Request | Full Text | Volumes</p>
             		</section>
             		<section>
             			<h2>Category: URL</h2>
             			<small>Assorted external URLs on the full record</small>
             			<p>FullText | FindingAid | DigitizedContent</p>
             		</section>
+            		<section>
+            			<h2>Category: Browse</h2>
+            			<small>Options to browse related materials</small>
+            			<p>Browse Shelf | Subjects</p>
+            		</section>
+            	</section>
+            	<section>
 					<section>
 						<h2>Interesting Findings</h2>
 					</section>
@@ -243,15 +254,69 @@
             	<section>
             		<section>
             			<h2>NCSU Summon Activity(*)</h2>
-            				<ul>
-            					<li>Tracking fewer things</li>
-            					<li>* Some things are almost impossible to track</li>
+            				<p class="fragment">Tracking fewer things</p>
+            				<p class="fragment">* Some things are almost impossible to track</p><br />
+            				<p class="fragment">Picked the things that were most reasonable to track, rather than most desired</p>
+            				
             				</ul>
             			</section>
-            		
-            		<section>
-            			<h2>Interesting Findings</h2>
+            	</section>
+            	               <section>
+                	<section>
+            			<h2>What are we tracking?</h2>
+            			<ul>
+            				<li>Searches</li>
+            				<li>Sorting</li>
+            				<li>Paging</li>
+            				<li>Facet activity</li>
+            			</ul><br /><br />
+            			<p>Most difficult to identify: user clicks to view full text. So we didn't go there.</p>
+            			<aside class="notes">The biggest thing to note here is just that the list is a lot, lot smaller. Searching activity (advanced search, search refinements, actual new searches) is interesting, but we don't necessarily
+            				care *that* much about paging or sorting. But they were easy to identify in the DOM. 
             		</section>
+            		<section>
+            			<h2>Category: Search</h2>
+            			<small>Different types of search activity</small>
+            			<p>Search Button | New Search | Keep Search Refinements | Advanced Search</p>
+            		</section>
+            		<section>
+            			<h2>Category: Sorting</h2>
+            			<small>Sort options</small>
+            			<p>Relevance | Date (newest) | Date (oldest)</p>
+            		</section>
+            		<section>
+            			<h2>Category: Facet</h2>
+            			<small>Clicks on actual facet values</small>
+            			<p>Individual facet name + value</p>
+            		</section>
+            		<section>
+            			<h2>Category: Paging</h2>
+            			<small>User paging through results</small>
+            			<p>Individual page number</p>
+            		</section>
+            	</section>
+            	<section>
+					<section>
+						<h2>Interesting Findings</h2>
+					</section>
+					<section>
+						<h5>Much more searching (and even paging) then clicking on facet values</h5>
+						<a class="image"  href="images/summon-overall-activity.png" target="_blank">
+                            <img  src="images/summon-overall-activity.png" alt="Full Record Preview" />
+                        </a>
+                    </section>
+                    <section>
+						<h5>Content Type and Subject are basically the only facets ever used</h5>
+						<a class="image"  href="images/summon-overall-activity.png" target="_blank">
+                            <img  src="images/summon-overall-activity.png" alt="Full Record Preview" />
+                        </a>
+                    </section>
+                    <section>
+						<h5>Advanced search does actually get used....some</h5>
+						<a class="image"  href="images/summon-overall-activity.png" target="_blank">
+                            <img  src="images/summon-overall-activity.png" alt="Full Record Preview" />
+                        </a>
+                    </section>
             	</section>
                 <section>
                     <section>
