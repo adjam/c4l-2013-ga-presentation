@@ -20,6 +20,21 @@
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="lib/css/zenburn.css">
 
+
+        <style type="text/css">
+         @-webkit-keyframes blink {
+            from { opacity: 1.0; }
+            to { opacity: 0.0; }
+         }
+
+         #blinky {
+            -webkit-animation-name: blink;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: cubic-bezier;
+            -webkit-animation-duration: 1s;
+         }
+         </style>
+
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
         <script>
             document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -174,7 +189,45 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
                             </p>
                         </section>
                         <section>
-                            <h2>Embed Objects with JSON</h2>
+                            <h2>jQuery API</h2>
+                            <pre>
+                                <code contenteditable>
+// continuing from above
+var record = $("body").data("bibRecord");
+console.log("Found ", record.items.length, "items for",record.localId);
+                                </code>
+                            </pre>
+                            <p style="font-size: 75%;">jQuery will silently(*) convert values, as shown in this example.  Things that "look like" JSON or numeric data will be returned as the appropriate type by the <code>.data()</code> function.
+                                <br />
+                                If you want the raw values, use <code>record.attr("data-bib-record")</code>
+                            </p>
+                            
+                        </section>
+                        <section>
+                            <h2>jQuery API (cont.)</h2>
+                            <pre>
+                                <code contenteditable>
+&lt;!-- HTML --&gt;
+&lt;div id="identifiers"
+        data-isbn="123456789X"
+        data-oclc="777777777"
+        data-upc="8888888888"&gt;
+        ISBN: 123456789X
+&lt;/div&gt;
+
+// JavaScript
+// get all the data attributes as an object
+var ids = $("#identifiers").data();
+console.log(ids.isbn); // 123456789X
+// or read individual attributes
+var isbn = $("#identifiers").data('isbn');
+// or manipulate the data
+$("#identifiers").data('isbn', normalize(isbn));
+                            </code>
+                        </pre>
+                    </section>
+                        <section>
+                            <h2>Even Embed Objects with JSON</h2>
 
                             <pre>
                             <code contenteditable>
@@ -196,21 +249,7 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
                             <small>This can get *cough* a little silly, but you can always escape it; remember that this is an API for machines, not people!  However, not everybody has 
                                 gobs of bandwidth all the time.</small>
                         </section>
-                        <section>
-                            <h2>jQuery API</h2>
-                            <pre>
-                                <code contenteditable>
-// continuing from above
-var record = $("body").data("bibRecord");
-console.log("Found ", record.items.length, "items for",record.localId);
-                                </code>
-                            </pre>
-                            <p style="font-size: 75%;">jQuery will silently(*) convert values, as shown in this example.  Things that "look like" JSON or numeric data will be returned as the appropriate type by the <code>.data()</code> function.
-                                <br />
-                                If you want the raw values, use <code>record.attr("data-bib-record")</code>
-                            </p>
-                            
-                        </section>
+                        
 
                         <section>
                             <h2>CSS Selector</h2>
@@ -282,7 +321,7 @@ $(document).ready(
                     <section>
                         <h2>On The Coding Style of the Above</h2>
 
-                        <h6 style="text-decoration: blink;">Don't Actually Do That</h6>
+                        <h6 id="blinky" style="text-decoration: blink;">Don't Actually Do That</h6>
                         <p>
                         <small>
                             There are a lot of ways the JavaScript you just saw could be improved; there's no error handling, the basic selector is inefficient, you can't use it to track events on elements that are not present when the page is loaded, and the code style does not lend itself to testing.  So don't do it like that!
@@ -291,10 +330,12 @@ $(document).ready(
                     <p class="fragment red">
                         Please also don't use <code>text-decoration: blink</code>
                     </p>
+                    <p class="fragment">
+                        And really don't go out and add CSS3 animation styles to simulate blinking text on Chrome for the sake of a gag.
+                    </p>
                     </section>
                 </section>
                 <section>
-                    <section>
                     <h2>Explorations</h2>
                     <ul>
                         <li class="fragment">Testing and Debugging</li>
@@ -303,8 +344,8 @@ $(document).ready(
                         <li class="fragment">Selector Strategies</li>
                         <li class="fragment">AJAX Content</li>
                     </ul>
-                    </section>
-                    <section>
+                </section>
+                <section>
                         <h2>Troublerebuking, Debugging, and Testing</h2>
                         <ul >
                             <li>Be proactive: events take a while to show up in your GA dashboard</li>
@@ -312,43 +353,38 @@ $(document).ready(
                             <li>Make friends with your browser's dev tools/debugger.</li>
                             <li>load <code>ga_debug.js</code> instead of <code>ga.js</code> during development (output goes to console)</li>
                         </ul>
-                        
-                        
-                            
-                            
                         <aside class="notes">
                             <p>If you're on Chrome, there's the "Google Analytics Debugger" extension that lets you select which version of the
                             JS is loaded in your browser.  This is very useful for working on a live site.</p>
                             <p>Debuggers may prove challenging for the newbie, but learning how to use them is worth the investment if you're interested
                              in web development.</p>
                         </aside>
-                    </section>
-                    
-                        <section>
-                        <h2>When it's not your markup</h2>
-                        <p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us the strategy for loading external JavaScript pages 
-                        in our Summon instance.
+                </section>
+                
+                <section>   
+                <section>
+                    <h2>When it's Not Your Markup</h2>
+                        <p>If you can't really control the markup, but you <em>do</em> have the ability to "inject" some JavaScript into the page, you need to use slighly different 
+                            techniques; some JavaScript knowledge here will help.
                         </p>
-                        <small>
-                        <ul>
-                            <li>You probably won't be able to track everything you want.</li>
-                            <li><em>Especially</em> if you don't have any insight into how the HTML is generated.</li>
-                        </ul>
-                        <p>
-                            The only major change required
-                            from the illustration above is to programmatically attach your event data to the elements you want to track instead of using the HTML5 data attributes.
-
-                        </p>
-                    </small>
-                        </section>
-                        <section>
-                            <h2>When It's Not Your Markup (cont.)</h2>
+                        <p>Our use case: Summon</p>
+                        <p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us how to load external JavaScript onto our Summon pages.</p>
+                </section>
+                <section>
+                            <h2>You Might Have to Give Up a Few Things</h2>
+                            <p>You probably won't be able to track everything you want,
+                            <em>especially</em> if you don't have any insight into how the HTML is generated.</p>
+                            <p>Summon, it turns out, embeds quite a bit of metadata into their pages (even some <code>data-*</code> attributes), but you have to hunt around for it.</p>
+                </section>
+                <section>
+                            <h2>The Biggest Difference</h2>
+                            <p>You'll need to use JavaScript to find the component event data in the document and add it.</p>
                             <pre>
                                 <code contenteditable>
 // from our custom summon-analytics.js
 $("#pageNavigation a[href^='/search']").click( 
     function(evt) {
-        var link = jQuery(evt.target);
+        var link = $(evt.target);
         var lt = $.trim(link.text());
         if ( lt == "Next" ) {
             lt = "" + (thisPage +1);
@@ -361,12 +397,14 @@ $("#pageNavigation a[href^='/search']").click(
         </code>
     </pre>
     <p>Not so much fun, but hey, it works.</p>
-</section>
+                        </section>
+                    
+    </section> <!-- end Summon discussion -->
                     
                     <section>
                         <h2>Tracking Tweaks</h2>
-                        <p>Say you've noticed (by direct observation) users idly clicking to cycle through a set of tabs, but you only want to count the 
-                            first click on each page as a "use".
+                        <p>Say you've noticed (by direct observation) users idly click around a set of tabs, but you only want to count the 
+                            first click on tab during a page view as a "use."
                          </p>
                          <pre>
                             <code>
@@ -376,6 +414,7 @@ function logGAEvent(el,data) {
         if ( data[0] !== '_trackEvent' ) {
             data.unshift("_trackEvent");
         }
+        // the .push() method returns a boolean indicating whether the event was sent.
         el._tracked = _gaq.push(data);
     }
 }
@@ -383,6 +422,7 @@ function logGAEvent(el,data) {
                          </pre>
                          <p>You can get even fancier with this, especially if you embed JSON or make use of other data- attributes.</p>
                     </section>
+
                     <section>
                         <h2>Selector Strategy</h2>
                         <ul>
@@ -392,8 +432,13 @@ function logGAEvent(el,data) {
                     </small>
                     </section>
                     <section>
-                        <h2>Tracking Events in AJAH(*) Content</h2>
-                        <p>jQuery to the rescue!</p>
+                        <section>
+                            <h2>Tracking Events in AJAH(*) Content</h2>
+                            <p>Even if you can control the markup that comes back, you'll have to attach the event listener that sends the event to GA when the user clicks on something in 
+                            the externally loaded content.
+                            </p>
+
+                            <p>jQuery to the rescue!</p>
                             <pre>
                                 <code contenteditable>
 // our catalog loads transformed EAD XML via XHR when users click on the content tab
@@ -402,11 +447,17 @@ $("#contents").on("click", ".EAD_daolink", function(evt) {
 });
                             </code>
                         </pre>
-                        <p>jQuery lets you specify handlers for events for elements that don't exist yet, by (essentially) listening on an (existing) element that (will) contain them.
-                            </p>
-                    
                     </section>
-                </section>
+                    <section>
+                        <h2>AJA? Content Tracking (cont.)</h2>
+                        <p>jQuery lets you specify handlers for events for elements that don't exist yet, by (essentially) listening on an (existing) element that (will) contain them.  This is not the only approach, but it is arguably the easiest to work with.
+                    </p>
+                    <aside class="notes">
+                        An alternate approach is to chain an event handler that attaches the events after the content is loaded.  This works, but it's more code and, "yo dawg" and all that.
+                    </aside>
+                    </section>
+                </section> <!-- end AJAX -->
+
                 <section>
                     <h2>Links</h2>
                     <ul>
