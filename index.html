@@ -401,7 +401,7 @@ $(document).ready(
                 <section>
                         <h2>Troublerebuking, Debugging, and Testing</h2>
                         <ul >
-                            <li>Be proactive<!/li>
+                            <li>Be proactive!</li>
                             <li>Emphasis:  don't be like me; plan for testability up front.</li>
                             <li>Make friends with your browser's dev tools/debugger.</li>
                         </ul>
@@ -412,10 +412,15 @@ $(document).ready(
                         We found that it can take up to a day for an event to show up in the GA dashboard, so "fire it up and see if it works" is a time consuming testing strategy.
                     </p>
                     <ul>
-                        <li>Write a separate function that actually does the logging, rather than doing it inline.</li>
-                        <li>Ditto for the event handler function.</li>
+                        <li>Write a separate function that actually does the event logging, rather than doing it inline.</li>
+                        <li>Ditto for the click handler function.</li>
                         <li>Test everything you can see *before* you try sending events to the third party</li>
-                    </ul>    
+                    </ul>
+                    <aside class="notes"> 
+                        <pre><code>$("*[data-ga-event]").css("border", "5px solid red");</code></pre> in the JavaScript console.
+                    </aside>
+                       
+                        
                 </section>
                 <section>
                     <h2>Above All</h2>
@@ -435,6 +440,16 @@ $(document).ready(
                     </ul>
                 </section>
             </section>
+
+            <section>
+                        <h2>Selector Strategy (Your Markup)</h2>
+                        <ol>
+                            <li><code>*[data-ga-event]</code> matches all elements with tracking data, but is slow and not all that flexible.</li>
+                            <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can temporarily disable 
+                                tracking for some elements should you need to, by simply removing the class.</li>
+                        </ol>
+                    </section>
+  
                 
             <section>   
                 <section>
@@ -497,14 +512,6 @@ function logGAEvent(el,data) {
                          <p>Again, this is not intended to be production-ready, but just to illustrate the technique.</p>
                     </section>
 
-                    <section>
-                        <h2>Selector Strategy</h2>
-                        <ul>
-                            <li><code>*[data-ga-event]</code> is slow, but matches all elements with tracking data</li>
-                            <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can easily disable tracking for some elements should you need to, by simply removing the class.</li>
-                        </ul>
-                    </small>
-                    </section>
                     <section>
                         <section>
                             <h2>Tracking Events in AJAH(*) Content</h2>
