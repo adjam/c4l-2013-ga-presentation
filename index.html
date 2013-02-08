@@ -818,7 +818,7 @@ function logGAEvent(el,data) {
                 center: true,
                 overview: true,
 
-                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                theme: Reveal.getQueryHash().theme || 'beige', // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
                 // Optional libraries used to extend on reveal.js
