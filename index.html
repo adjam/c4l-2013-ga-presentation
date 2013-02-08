@@ -79,7 +79,7 @@
                     </aside>
                 </section>
                 	<section>
-                		<h2>Some Details</h2>
+                		<h2>Google Analytics Event Tracking</h2>
                 		<ul>
                 			<li>You decide what to track</li>
                 				<ul>
@@ -89,16 +89,17 @@
                 			<li>Use simple JavaScript to push events to Google</li>
                 			<li>Enjoy Google Analytic's feature-full reporting interface</li>
                 		</ul>
-                		<aside class="notes">A set of tools within Google Analytics for tracking user actions in a locally customizable, granular way. You decide what to record and how to categorize it. If you are already loading the Google Analytics Javascript snippet into your site to track pageviews, you've already pretty much done all the setup that you need to do. Rather than pushing a javascript call that pushes the standard pageview into Google Analytics for tracking and reporting, you manually push an event that a user performs on your site. Along with the event, you push up several different categories to describe it -- these can be used for slicing and dicing your reporting later.
-						As Adam will discuss in more detail, this means that with a little information architecture laid out over your events and a little javascript hacking, you have a nice user interface for reporting in more granular detail exactly what users are doing.
+                		<aside class="notes">Adam is going to delve into all the technical details, so this is the 3 sentence overview to provide context.
+                		A set of tools within Google Analytics for tracking user actions in a locally customizable, granular way. You decide what to record and how to categorize it. Rather than pushing a javascript call that pushes the standard pageview into Google Analytics for tracking and reporting, you push an event that a user performs on your site, along with several different categories of metadata to describe it -- these can be used for slicing and dicing your reporting later.
+						Then you have a Google Analytic's standard, pretty feature-full interface for reporting across these events.
 						</aside>
 					</section>
 					<section>
 						<h2>Why Care?</h2>
 						<p class="fragment">Have real patron data to use to improve usability of your site.</p>
 						<p class="fragment">Make data-driven design decisions. </p>
-					</section>
 					<aside class="notes">Stop long arguments about design by showing what users do and don't do in your interfaces.</aside>
+					</section>
 				</section>
                 <!-- Example of nested vertical slides -->
                 <section>
@@ -185,11 +186,12 @@
                 </section>
                 <section>
                 	<section>
-                		<h2>NCSU Catalog Activity(*)</h2>
+                		<h2>NCSU Catalog Activity (*)</h2>
                 		 	<p class="fragment">Tracking LOTS of things</p>
                 			<p class="fragment">(*) But not all of them for very long</p><br />
-                			<p class="fragment">This is the time for planning. How to categorize events to achieve the desired reports?</p>
                 	</section>
+                	<aside class="notes">Before we talk about technical details, I want to provide some examples of usage data we're gleaning from Google Analytics event tracking.
+                	In the catalog, we decided to track a LOT of things. Unfortunately, this has been a work in progress, so some of the data has not been gathered for very long.
                 	<section>
             			<h2>What are we tracking?</h2>
             			<ul>
@@ -262,10 +264,12 @@
                             <img  src="images/catalog-event-categories.png" alt="Full Record Preview" />
                         </a>
                         <small>Note: February 5-7, 2013</small>
-                        <aside class="notes">Note that full text activity is scattered across URL, Location Tab, and Results. It's a big reason that the URL category is so high. The Location Tab contains some
-                        	frequently used items, particularly requesting and shelf browsing. A note about the dates....we just finally got some code released last week that contributed numbers for several categories of activity, particularly
+                        <aside class="notes">A note about the dates....we just finally got some code released last week that contributed numbers for several categories of activity, particularly
                         	full text URLs and things on the results list. In order to include that activity, I've had to limit the date range for these overall statistics. As I'll note on the next slide, that may skew things a little, but overall the trends
-                        	are very similar when compared out across the last 3-4 months.</aside>
+                        	are very similar when compared out across the last 3-4 months.
+                        	This chart shows the different categories of events we're tracking - the first level of metadata we use to aggregate our events for reporting.
+                        	The first biggest thing you see when looking at the stats is...wow, tabs are used a lot. These are tabs on the full record page. I'll talk about that a little more next slide.
+                        	The next thing is that URL category. Note that full text activity is scattered across URL, Location Tab, and Results. It's a big reason that the URL category is so high. </aside>
                     </section>
 					<section>
 						<h5>Wait...do I see MARC??</h5>
@@ -273,19 +277,17 @@
                             <img  src="images/catalog-specific-events.png" alt="Full Record Preview" />
                         </a>
                         <small>Note: February 5-7, 2013</small>
-                        <aside class="notes">This data is our second level "actions" -- not categories of events but specific events. It's interesting to again note the prominence of
-                        	tab activity here. We saw this confirmed in usability testing recently -- the users literally run through and click on all the tabs no matter what they are
-                        	called as one of their first activities if they are looking for something. This includes the MARC tab that we thought no one but staff ever clicked on.
-                        	Doesn't mean that the users know what it is; they usually look at it and are like "whatever that is..." I'm also interested, and a little disappointed by the number
-                        	of clicks on the "Details" tab. It's the second tab in our interface, and really, things like ISBN, other authors, other titles, notes are just no what most undergraduates are
-                        	looking for. This I'm sure is another case in point of tab click mania. And then you see Location Tab in the list -- this is them clicking back on the original tab after realizing the other
+                        <aside class="notes">This data is our second level "actions" -- primarily specific events rather than groupings of events. Again note the prominence of
+                        	tab activity here. We saw this confirmed in usability testing recently -- the users literally run through and click on all the tabs  as one of their first activities if they are looking for something. This includes the MARC tab that we thought no one but staff ever clicked on, although they don't stay there very long.
+                        	I'm also interested in the number of clicks on the "Details" tab. It's the second tab in our interface, and really, things like ISBN, other authors, other titles, notes are just not what most undergraduates are
+                        	looking for. I believe this is another case in point of tab click mania. And then you see Location Tab in the list -- this is them clicking back on the original tab after realizing the other
                         	tabs really weren't particularly helpful. Full text is high obviously; you can see that our list feature is used a fair amount, as is requesting. It's also interesting to see
                         	the Browse shelf, and our feature to send the search out to our local TRLN consortium being relatively highly used in comparison with other things like emailing, printing, or texting a record.</section>
                     
                     <section>
                     	<h2>An apology</h2>
                     	<ul>
-                    		<li>Longer term usage trends show the Contents (supplemental table of contents) tab usage being extremely high (*) </li>
+                    		<li>Longer term usage trends show the Contents (table of contents) tab usage being extremely high (*) </li>
                     		<li>Google Preview over the long haul is popular enough to make this top 10 list</li>
                     	</ul>
                     	<br />
@@ -298,7 +300,8 @@
 						<a class="image"  href="images/catalog-shelf-browse.png" target="_blank">
                             <img  src="images/catalog-shelf-browse.png" alt="Full Record Preview" />
                         </a>
-                        <aside class="notes">Note we have longer term statistics here, so I feel pretty confident about these numbers. 3/4 of users click on "Browse shelf" from the list of individual items
+                        <aside class="notes">Now that we've looked at the most popular, what other interesting tidbits have we found?
+                        Note we have longer term statistics here, so I feel pretty confident about these numbers. 3/4 of users click on "Browse shelf" from the list of individual items
                         on the holdings tab, rather than the big fancy looking widget.</aside>
                         <small>Note: November - February, 2013</small>
                     </section>
@@ -327,7 +330,7 @@
 						<a class="image"  href="images/catalog-add-list.png" target="_blank">
                             <img  src="images/catalog-add-list.png" alt="Full Record Preview" />
                         </a>
-                        <aside class="notes"></aside>
+                        <aside class="notes"></aside><br />
                         <small>Note: February 5-7, 2013</small>
                     </section>
                       <section>
@@ -352,17 +355,18 @@
                         <aside class="notes">70% of full text URL clicking is happening on the full record, even though the same URLs are offered on the results list</aside>
                     </section>
                     <section>
-						<a class="image"  href="images/catalog-full-record-full-text.png" target="_blank">
-                            <img  src="images/catalog-full-record-full-text.png" alt="Full Record Preview" />
-                        </a>
-                        <aside class="notes"></aside>
-                    </section>
-                    <section>
 						<a class="image"  href="images/catalog-results-full-text.png" target="_blank">
                             <img  src="images/catalog-results-full-text.png" alt="Full Record Preview" />
                         </a>
                         <aside class="notes"></aside>
                     </section>
+                    <section>
+						<a class="image"  href="images/catalog-full-record-full-text.png" target="_blank">
+                            <img  src="images/catalog-full-record-full-text.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    
                     
                     <section>
                    		<h5>Users want to get stuff delivered (*)</h5>
@@ -379,12 +383,12 @@
             	</section>
             	<section>
             		<section>
-            			<h2>NCSU Summon Activity(*)</h2>
+            			<h2>NCSU Summon Activity (*)</h2>
             				<p class="fragment">Tracking fewer things</p>
             				<p class="fragment">* Some things are almost impossible to track (ex: clicks to view full text)</p><br />
-            				<p class="fragment">Picked the things that were most reasonable to track, rather than most desired</p>
-            				
-            				</ul>
+            				<p class="fragment">Picked the things that were easiest to track and seemed most durable, rather than most desired</p>
+            				<aside class="notes">We've also experimented with adding some event tracking to our Serials Solutions Summon interface, for which we use the vendor-hosted interface.
+            				Adam can share more about the differences we found trying to track events in markup we didn't control; but to summarize we are tracking fewer things primarily because they are harder to track in a maintainable way.
             			</section>
             			<section>
             			<h2>What are we tracking?</h2>
