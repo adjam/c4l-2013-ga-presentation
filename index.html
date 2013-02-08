@@ -80,13 +80,13 @@
                 	<section>
                 		<h2>Some Details</h2>
                 		<ul>
-                			<li>Can be used to track any user action you can identify with JavaScript</li>
+                			<li>Track any user action you can identify with JavaScript</li>
                 			<li>You decide what to track!</li>
                 				<ul>
                 					<li>Which user events?</li>
                 					<li>How should they be categorized?</li>
                 				</ul>
-                			<li>Use a simple JavaScript call to push events to Google</li>
+                			<li>Use simple JavaScript to push events to Google</li>
                 			<li>Enjoy Google Analytic's feature-full reporting interface</li>
                 		</ul>
                 		<aside class="notes">A set of tools within Google Analytics for tracking user actions in a locally customizable, granular way. You decide what to record and how to categorize it. If you are already loading the Google Analytics Javascript snippet into your site to track pageviews, you've already pretty much done all the setup that you need to do. Rather than pushing a javascript call that pushes the standard pageview into Google Analytics for tracking and reporting, you manually push an event that a user performs on your site. Along with the event, you push up several different categories to describe it -- these can be used for slicing and dicing your reporting later.
@@ -103,20 +103,26 @@
                 <!-- Example of nested vertical slides -->
                 <section>
                     <section>
-                        <h2>Event Tracking Use Cases</h2>
-                    </section>
-                    <section>
+                    	<h2>Event Tracking Use Cases</h2>
                     	<ul>
-                    		<li>Hidden or externally loaded (AJAX) content</li>
+                    		<li class="fragment">Hidden or externally loaded (AJAX) content</li>
                     	</ul>
+                    </section>
+                     <section> 
+                         <a class="image" href="images/catalog-hidden-content.png" target="_blank">
+                            <img src="images/catalog-hidden-content.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes">
+                            Some content on the page is hidden when the page loads; users access that content 
+                            by following a link.  
+                        </aside>
                     </section>
                     <section> 
                          <a class="image" href="images/catalog-record-ajax.png" target="_blank">
                             <img src="images/catalog-record-ajax.png" alt="Full Record Preview" />
                         </a>
                         <aside class="notes">
-                            Some content on the page is hidden when the page loads; users access that content 
-                            by following a link.  Other content is not loaded initially, but is on user demand (as in the tabs).
+                            Other content is not loaded initially, but is on user demand (as in the tabs).
                         </aside>
                     </section>
                     <section>
@@ -256,6 +262,10 @@
                             <img  src="images/catalog-event-categories.png" alt="Full Record Preview" />
                         </a>
                         <small>Note: February 5-7, 2013</small>
+                        <aside class="notes">Note that full text activity is scattered across URL, Location Tab, and Results. It's a big reason that the URL category is so high. The Location Tab contains some
+                        	frequently used items, particularly requesting and shelf browsing. A note about the dates....we just finally got some code released last week that contributed numbers for several categories of activity, particularly
+                        	full text URLs and things on the results list. In order to include that activity, I've had to limit the date range for these overall statistics. As I'll note on the next slide, that may skew things a little, but overall the trends
+                        	are very similar when compared out across the last 3-4 months.</aside>
                     </section>
 					<section>
 						<h5>Wait...do I see MARC??</h5>
@@ -263,41 +273,120 @@
                             <img  src="images/catalog-specific-events.png" alt="Full Record Preview" />
                         </a>
                         <small>Note: February 5-7, 2013</small>
-                    </section>
+                        <aside class="notes">This data is our second level "actions" -- not categories of events but specific events. It's interesting to again note the prominence of
+                        	tab activity here. We saw this confirmed in usability testing recently -- the users literally run through and click on all the tabs no matter what they are
+                        	called as one of their first activities if they are looking for something. This includes the MARC tab that we thought no one but staff ever clicked on.
+                        	Doesn't mean that the users know what it is; they usually look at it and are like "whatever that is..." I'm also interested, and a little disappointed by the number
+                        	of clicks on the "Details" tab. It's the second tab in our interface, and really, things like ISBN, other authors, other titles, notes are just no what most undergraduates are
+                        	looking for. This I'm sure is another case in point of tab click mania. And then you see Location Tab in the list -- this is them clicking back on the original tab after realizing the other
+                        	tabs really weren't particularly helpful. Full text is high obviously; you can see that our list feature is used a fair amount, as is requesting. It's also interesting to see
+                        	the Browse shelf, and our feature to send the search out to our local TRLN consortium being relatively highly used in comparison with other things like emailing, printing, or texting a record.</section>
+                    
                     <section>
-						<h5>Shelf browsing happens from the holdings list</h5>
+                    	<h2>An apology</h2>
+                    	<ul>
+                    		<li>Longer term usage trends show the Contents (supplemental table of contents) tab usage being extremely high (*) </li>
+                    		<li>Google Preview over the long haul is popular enough to make this top 10 list</li>
+                    	</ul>
+                    	<br />
+                    	<br />
+                    	<small> (*) sorry, that was a bug in the last code release</small>
+                    	<aside class="notes">However, use of the "expand to TRLN" feature holds its own against Google Preview, which frankly surprises me. Now if only I knew better how much of this usage was library staff.</aside>
+				</section>
+				<section>
+						<h5>A small link can overpower a fancy widget</h5>
 						<a class="image"  href="images/catalog-shelf-browse.png" target="_blank">
                             <img  src="images/catalog-shelf-browse.png" alt="Full Record Preview" />
                         </a>
+                        <aside class="notes">Note we have longer term statistics here, so I feel pretty confident about these numbers. 3/4 of users click on "Browse shelf" from the list of individual items
+                        on the holdings tab, rather than the big fancy looking widget.</aside>
                         <small>Note: November - February, 2013</small>
                     </section>
                     <section>
-                    	<h5>Users want to get stuff(*).
 						<a class="image"  href="images/catalog-shelf-browse-screenshot.png" target="_blank">
                             <img  src="images/catalog-shelf-browse-screenshot.png" alt="Full Record Preview" />
                         </a>
-                        <small>Note: November - February, 2013</small>
-                        <small>(*) E-mail is a red herring; low reporting is due to a code bug. More recent numbers show it on par with texting.</small>
+                        
                     </section>
                     <section>
-						<h5>What doesn't get used?</h5>
-						<a class="image"  href="images/summon-search.png" target="_blank">
-                            <img  src="images/summon-search.png" alt="Full Record Preview" />
+						<h5>Having a link in more than one place can be helpful</h5>
+						<a class="image"  href="images/catalog-requesting.png" target="_blank">
+                            <img  src="images/catalog-requesting.png" alt="Full Record Preview" />
                         </a>
+                        <aside class="notes"></aside>
+                        <small>Note: January - February, 2013</small>
+                    </section>
+                     <section>
+						<a class="image"  href="images/catalog-request-links.png" target="_blank">
+                            <img  src="images/catalog-request-links.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    <section>
+						<h5>Users make some decisions from the results list</h5>
+						<a class="image"  href="images/catalog-add-list.png" target="_blank">
+                            <img  src="images/catalog-add-list.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                        <small>Note: February 5-7, 2013</small>
+                    </section>
+                      <section>
+						<a class="image"  href="images/catalog-results-add-list.png" target="_blank">
+                            <img  src="images/catalog-results-add-list.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    <section>
+						<a class="image"  href="images/catalog-full-record-add-list.png" target="_blank">
+                            <img  src="images/catalog-full-record-add-list.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    <section>
+						<h5>But they still like to look at the full record</h5>
+						<a class="image"  href="images/catalog-full-text.png" target="_blank">
+                            <img  src="images/catalog-full-text.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                        <small>Note: February 5-7, 2013</small>
+                        <aside class="notes">70% of full text URL clicking is happening on the full record, even though the same URLs are offered on the results list</aside>
+                    </section>
+                    <section>
+						<a class="image"  href="images/catalog-full-record-full-text.png" target="_blank">
+                            <img  src="images/catalog-full-record-full-text.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    <section>
+						<a class="image"  href="images/catalog-results-full-text.png" target="_blank">
+                            <img  src="images/catalog-results-full-text.png" alt="Full Record Preview" />
+                        </a>
+                        <aside class="notes"></aside>
+                    </section>
+                    
+                    <section>
+                   		<h5>Users want to get stuff delivered (*)</h5>
+                   		<a class="image"  href="images/catalog-tools.png" target="_blank">
+                            <img  src="images/catalog-tools.png" alt="Full Record Preview" />
+                        </a>
+                   		<small>Note: November - February, 2013</small>
+                        <small>(*) E-mail is a red herring; low reporting is due to a prior code bug. More recent numbers show it on par with texting.</small>
+                        <aside class="notes">This graph shows use of tools in the toolstrip that runs across the top of the full record page (plus teh Add to List and Google Preview buttons). 
+                        The uptake on the "Add to List" functionality is interesting and shows its popularity in gathering a set of things together for users. I'm hypothesizing here, but am betting
+                        that has replaced users texting / emailing / printing individual records to themselves (don't actually have stats from the list at this point). 
+                        
                     </section>
             	</section>
             	<section>
             		<section>
             			<h2>NCSU Summon Activity(*)</h2>
             				<p class="fragment">Tracking fewer things</p>
-            				<p class="fragment">* Some things are almost impossible to track</p><br />
+            				<p class="fragment">* Some things are almost impossible to track (ex: clicks to view full text)</p><br />
             				<p class="fragment">Picked the things that were most reasonable to track, rather than most desired</p>
             				
             				</ul>
             			</section>
-            	</section>
-            	               <section>
-                	<section>
+            			<section>
             			<h2>What are we tracking?</h2>
             			<ul>
             				<li>Searches</li>
@@ -309,6 +398,7 @@
             			<aside class="notes">The biggest thing to note here is just that the list is a lot, lot smaller. Searching activity (advanced search, search refinements, actual new searches) is interesting, but we don't necessarily
             				care *that* much about paging or sorting. But they were easy to identify in the DOM. 
             		</section>
+            	
             		<section>
             			<h2>Category: Search</h2>
             			<small>Different types of search activity</small>
@@ -330,19 +420,21 @@
             			<p>Individual page number</p>
             		</section>
             	</section>
+            	</section>
+                	
             	<section>
 					<section>
 						<h2>Interesting Findings</h2>
 						<small>November 2012 - February 2013</small>
 					</section>
 					<section>
-						<h5>Much more searching (and even paging) then clicking on facet values</h5>
+						<h5>Paging is more popular than facets</h5>
 						<a class="image"  href="images/summon-overall-activity.png" target="_blank">
                             <img  src="images/summon-overall-activity.png" alt="Full Record Preview" />
                         </a>
                     </section>
                     <section>
-						<h5>Content Type and Subject are basically the only facets ever used</h5>
+						<h5>Content Type and Subject are basically the only facets </h5>
 						<a class="image"  href="images/summon-facet-usage.png" target="_blank">
                             <img  src="images/summon-facet-usage.png" alt="Full Record Preview" />
                         </a>
