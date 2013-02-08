@@ -482,7 +482,7 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
                 <section>
                     <h2>Implementation Issues</h2>
                     <ul style="list-style-type: none;">
-                        <li class="fragment">Q1. How do we get the right data into the GA <code>_trackEvent</code> ?</li>
+                        <li class="fragment">Q1. Where do we get the data for the GA API call?</li>
                         <li class="fragment">Q2. How do we send events when "the right things" happen in the UI?</li>
                         <li class="fragment">A1. HTML5 Data Attributes</li>
                         <li class="fragment">A2. jQuery (or similar)</li>
@@ -547,8 +547,9 @@ $("a[data-ga-event]").on("click", function(evt) {
                     <h2>Really, That's It?</h2>
                     <p>Yes.</p>
                     <p class="fragment">
-                        Ok, no, but that's the basic technique.
+                        Ok, no.  But that <em>is</em> the basic technique.
                     </p>
+                    <p class="fragment">Now, let me try to scare you.</p>
                 </section>
                  <section>
                         <h2>On The Coding Style</h2>
@@ -717,8 +718,8 @@ $("#contents").on("click", ".EAD_daolink", function(evt) {
             <section>
                         <h2>On Selector Strategy (Your Markup)</h2>
                         <ul>
-                            <li><code>*[data-ga-event]</code> matches all elements with tracking data, but is potentially very slow; this data can be valuable, but you don't want to
-                                frustrate your users.</li>
+                            <li><code>*[data-ga-event]</code> matches all elements with tracking data, but is potentially very slow; the data we are collecting can be valuable, 
+                                but you don't want to frustrate your users trying to get it.</li>
                             <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can temporarily disable 
                                 tracking for some elements should you need to, by simply removing the class.</li>
                         </ul>
@@ -771,7 +772,8 @@ function logGAEvent(el,data) {
 
                 <section>
                     <h2>About This Presentation</h2>
-                    <p>We forked <a href="https://github.com/hakimel/reveal.js">reveal.js</a> on github and did our edits there.</p>
+                    <p>This is a single page of HTML, but we're mostly only responsible for the content.</p>
+                    <p>We forked Hakim El Hattab's <a href="https://github.com/hakimel/reveal.js">reveal.js</a> on github and collaboratively edited it.</p>
                 </section>
 
             </div>
