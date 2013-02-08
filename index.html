@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="stylesheet" href="css/reveal.min.css">
-        <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+        <link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -470,8 +470,6 @@ var _gaq = _gaq || [];
 _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optional_eventValue ]);
                             </code>
                         </pre>
-                        <p>That's really all there is to it; the "push" method takes an array, the first member of which is a command and the rest of which
-                            constitute the arguments to that command.</p>
                     </section>
                     <section>
                         <h2>Event Overview</h2>
@@ -509,8 +507,22 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
                             use them to add visual styles.
                         </p>
                     </section>
+                </section>
+            </section>
+            <section>
+                <section>
+                        <h2>Putting it Together</h2>
+                        
+                        <ol>
+                            <li class="fragment">Make an event taxonomy</li>
+                            <li class="fragment">Edit markup</li>
+                            <li class="fragment">Add handlers for the events you want to track</li>
+                            <li class="fragment">Sit back and wait for the <strike>money</strike> data to roll in</li>                       
+                        </ol>
+                </section>
+                
                     <section>
-                     <h2>Attributes Just for Your Scripts</h2>
+                     <h2>The Implementation</h2>
                      <h6>HTML</h6>
                      <pre>
                         <code>
@@ -531,46 +543,6 @@ $("a[data-ga-event]").on("click", function(evt) {
                         </code>
                     </pre>
                 </section>
-            </section>
-            <section>
-                <section>
-                        <h2>Putting it Together</h2>
-                        
-                        <ol>
-                            <li class="fragment">Make an event taxonomy</li>
-                            <li class="fragment">Edit markup</li>
-                            <li class="fragment">Add handlers for the events you want to track</li>
-                            <li class="fragment">Sit back and wait for the <strike>money</strike> data to roll in</li>                       
-                        </ol>
-                    </section>
-
-                    <section>
-                        <h2>Add Handlers</h2>
-                        <pre>
-                            <code>
-var _gaq = _gaq || [];
-
-function logGAEvent(data) {
-    data.unshift("_trackEvent");
-    _gaq.push(data);
-}
-
-$(document).ready( 
-    function() {
-        $("*[data-ga-event]").click( 
-            function(evt) {
-                var data = $(this).data("gaEvent").split(",");
-                logGAEvent(data);
-            }
-        );
-    }
-);
-                </code>
-                        </pre>
-                    </section>
-                   
-                </section>
-
                 <section>
                     <h2>Really, That's It?</h2>
                     <p>Yes.</p>
@@ -621,6 +593,7 @@ $(document).ready(
                     <ul>
                     <li>You'll have to use more selectors.</li>
                     <li>You may have to use specific location in the DOM instead of <code>id</code> and <code>class</code> attributes.</li>
+                    <li>You might end up writing some rather complex code to attach the right data to the right elements</li>
 
                     </ul>
                 </section>
@@ -643,7 +616,8 @@ $("#pageNavigation a[href^='/search']").click(
 );
         </code>
     </pre>
-    <p>This puts the event data into the event handler, but you could also write data to the element on page load and do something more like we did in our catalog.
+    <p>This puts the event data into the event handler, which is not the only available technique; another would be to add the event tracking data to the elements as the page is loaded and
+        proceed as before.
     </p>
         </section>
                     
