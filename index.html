@@ -389,7 +389,7 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
             </section>
                     
                 <section>
-                    <h2>Implementation Challenges</h2>
+                    <h2>Implementation Issues</h2>
                     <ul style="list-style-type: none;">
                         <li class="fragment">Q1. How do we get the right data into the GA <code>_trackEvent</code> ?</li>
                         <li class="fragment">Q2. How do we send events when "the right things" happen in the UI?</li>
@@ -411,42 +411,45 @@ _gaq.push(['_trackEvent', eventCategory, eventAction, optional_eventLabel, optio
                         </figure>
                     </section>
                     <section>
-                     <h2>Attributes Just for Scripts</h2>
+                        <h2>Huh?</h2>
+                        <p><code>data-*</code> attributes give you a place to put data for use by your scripts.  Browsers shouldn't try to do anything with them, and you shouldn't
+                            use them to add visual styles.
+                        </p>
+                    </section>
+                    <section>
+                     <h2>Attributes Just for Your Scripts</h2>
                      <h6>HTML</h6>
                      <pre>
                         <code>
 &lt;a href="#marc" data-ga-event="Record,Tab,MARC"&gt;Marc Record&lt;/a&gt;
 </code>
 </pre>
-<h6>JavaScript</h6>
+<h6>jQuery API</h6>
     <pre>
         <code>
 
 $("a[data-ga-event]").on("click", function(evt) {
     // data-ga-event =&gt; "gaEvent"
     var data = $(this).data("gaEvent").split(",");
-    // make _trackEvent the first element
     data.unshift("_trackEvent");
-    var success = _gaq.push(data);
+    // data == ['_trackEvent','Record','Tab','Marc']
+    _gaq.push(data);
 });
                         </code>
                     </pre>
                 </section>
             </section>
-
             <section>
                 <section>
                         <h2>Putting it Together</h2>
                         
                         <ol>
-                            <li>Make an event taxonomy</li>
-                            <li>Edit markup</li>
-                            <li>Add handlers for the events you want to track</li>
-                            <li>Sit back and wait for the <strike>money</strike> data to roll in</li>                       
+                            <li class="fragment">Make an event taxonomy</li>
+                            <li class="fragment">Edit markup</li>
+                            <li class="fragment">Add handlers for the events you want to track</li>
+                            <li class="fragment">Sit back and wait for the <strike>money</strike> data to roll in</li>                       
                         </ol>
                     </section>
-
-
 
                     <section>
                         <h2>Add Handlers</h2>
@@ -472,13 +475,23 @@ $(document).ready(
                 </code>
                         </pre>
                     </section>
-                    <section>
-                        <h2>On The Coding Style of the Above</h2>
+                   
+                </section>
+
+                <section>
+                    <h2>Really, That's It?</h2>
+                    <p>Yes.</p>
+                    <p class="fragment">
+                        Ok, no, but that's the basic technique.
+                    </p>
+                </section>
+                 <section>
+                        <h2>On The Coding Style</h2>
 
                         <h6 id="blinky" style="text-decoration: blink;">Don't Actually Do That</h6>
                         <p>
                         <small>
-                            There are a lot of ways the JavaScript you just saw could be improved; there's no error handling, the basic selector is inefficient, you can't use it to track events on elements that are not present when the page is loaded, and the code style does not lend itself to testing.  So don't do it like that!
+                            These are stick figure drawings of actual production code.
                         </small>
                         </p>
                     <p class="fragment">
@@ -489,87 +502,37 @@ $(document).ready(
                     </p>
                     </section>
                 </section>
-                <section>
-                    <h2>Explorations</h2>
-                    <ul>
-                        <li class="fragment">Testing and Debugging</li>
-                        <li class="fragment">What if you don't have full control over the markup?</li>
-                        <li class="fragment">Tweak what's tracked</li>
-                        <li class="fragment">Selector Strategies</li>
-                        <li class="fragment">AJAX Content</li>
-                    </ul>
-                </section>
-                <section>
-                <section>
-                        <h2>Troublerebuking, Debugging, and Testing</h2>
-                        <ul >
-                            <li>Be proactive!</li>
-                            <li>Emphasis:  don't be like me; plan for testability up front.</li>
-                            <li>Make friends with your browser's dev tools/debugger.</li>
-                        </ul>
-                </section>
-                <section>
-                    <h2>Working With a Net</h2>
-                    <p>
-                        We found that it can take up to a day for an event to show up in the GA dashboard, so "fire it up and see if it works" is a time consuming testing strategy.
-                    </p>
-                    <ul>
-                        <li>Write a separate function that actually does the event logging, rather than doing it inline.</li>
-                        <li>Ditto for the click handler function.</li>
-                        <li>Test everything you can see *before* you try sending events to the third party</li>
-                    </ul>
-                    <aside class="notes"> 
-                        <pre><code>$("*[data-ga-event]").css("border", "5px solid red");</code></pre> in the JavaScript console.
-                    </aside>
-                       
-                        
-                </section>
-                <section>
-                    <h2>Above All</h2>
-                    <p>Be the kind of person that writes automated tests.  Breaking out things into separate functions lets you set breakpoints etc., but also gives you <em>units</em>
-                    to test and, in the context of JavaScript, lets you easily wrap or mock those functions which is very useful for writing test suites.  
-                    </p>
-                </section>
-                <section>
-                 <h2>Other Safety Tips</h2>
-                    <ul>
-                        <li>Know that <code>_gaq.push()</code> returns a boolean indicating success or failure (just like Array.push()).</li>
-                        <li>Load <code>ga_debug.js</code> instead of <code>ga.js</code> during development; this outputs information about what GA is actually doing behind the scenes in your
-                            browser's console.
-                        </li>
-                        <li>If you're a Chrome user install the Google Analytics Debugging extension; this lets you dynamically enable <code>ga_debug.js</code> in your browser, which is
-                            very handy if you're working on a live site.</li>
-                    </ul>
-                </section>
-            </section>
 
-            <section>
-                        <h2>Selector Strategy (Your Markup)</h2>
-                        <ol>
-                            <li><code>*[data-ga-event]</code> matches all elements with tracking data, but is slow and not all that flexible.</li>
-                            <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can temporarily disable 
-                                tracking for some elements should you need to, by simply removing the class.</li>
-                        </ol>
-                    </section>
-  
-                
-            <section>   
+        <section>   
                 <section>
                     <h2>When it's Not Your Markup</h2>
-                        <p>If you can't really control the markup, but you <em>do</em> have the ability to "inject" some JavaScript into the page, you need to use slighly different 
-                            techniques; some JavaScript knowledge here will help.
-                        </p>
+                    <p>You might want to track things going on in an externally hosted service, such as we did with Summon, which generates its own HTML.  Adding
+                        our own HTML5 data attributes here is not possible.
+                    </p>
                 </section>
                 <section>
-                    <h2>Our Use Case: Summon</h2>
+                    <h2>Not Your Markup (cont.)</h2>
+                    <ul>
+                        <li>Find a way to inject your javascript (and, if needed, GA) onto the page.</li>
+                        <li>Add tracking data to elements programmatically.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Inject JavaScript</h2>
                         <p>Matthew Reidsma's <a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a> showed us how to load external JavaScript onto our Summon pages.</p>
-                        <p>The remaining challenge was figuring out how to attach event data to the right elements.  Summon pages are actually quite information-rich, but not knowing how they're
-                            assembled means we made some trade-offs.
-                        </p>
+                        <p>For other services, if there's no direct support for it, the product's site customization features might allow adding <code>&lt;script&gt;</code> tags.</p>
                 </section>
                 <section>
-                            <h2>The Biggest Difference</h2>
-                            <p>You'll need to use JavaScript to find the component event data in the document and add it.</p>
+                    <h2>Add Tracking Data</h2>
+
+                    <ul>
+                    <li>You'll have to use more selectors.</li>
+                    <li>You may have to use specific location in the DOM instead of <code>id</code> and <code>class</code> attributes.</li>
+
+                    </ul>
+                </section>
+                <section>
+                    <h2>Example</h2>
                             <pre>
                                 <code contenteditable>
 // from our custom summon-analytics.js
@@ -587,16 +550,130 @@ $("#pageNavigation a[href^='/search']").click(
 );
         </code>
     </pre>
-    <p>Not so much fun, but hey, it works.</p>
-                        </section>
+    <p>This puts the event data into the event handler, but you could also write data to the element on page load and do something more like we did in our catalog.
+    </p>
+        </section>
+        <section>
+                
+
+
+                </section>
                     
     </section> <!-- end Summon discussion -->
-                    
+            
+   
+                <section>
+                    <h2>Explorations</h2>
+                    <ul>
+                        <li class="fragment">Testing and Debugging</li>
+                        <li class="fragment">AJAX Content</li>                        
+                        <li class="fragment">Selector Strategies</li>
+                        <li class="fragment">Tracking Tweaks</li>
+                    </ul>
+                </section>
+                <section>
+                <section>
+                        <h2>Troublerebuking, Debugging, and Testing</h2>
+                        <ul >
+                            <li>Be proactive!  Set up a safety net first</li>
+                            <li>Emphasis:  don't be like me; plan for testability up front.</li>
+                            <li>Make friends with your browser's dev tools/debugger.</li>
+                        </ul>
+                </section>
+                <section>
+                    <h2>&#x201c;Fire it up and see if it works?&#x201d;</h2>
+                    <p>
+                        We found that it can take up to a day for an event to show up in the GA dashboard, so this is an error-prone and time consuming testing strategy.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Working With a Net</h2>
+                    <ul>
+                        <li>Write a separate function that actually does the event logging, rather than doing it inline.</li>
+                        <li>Ditto for the click handler function.</li>
+                        <li>Test everything you can see and control *before* you try sending events to the third party</li>
+                    </ul>
+                    <aside class="notes"> 
+                        <pre><code>$("*[data-ga-event]").css("border", "5px solid red");</code></pre> in the JavaScript console.
+                    </aside>
+                        
+                </section>
+                <section>
+                    <h2>Above All</h2>
+                    <h6>Be the kind of person that writes automated tests.</h6> 
+                    <ul>
+                    <li>Write your JavaScript so it's testable 
+                        <ul>
+                            <li>use named functions</li>
+                            <li>Single Responsibility Principle -- don't do too much in your functions.</li>
+                        </ul>
+                    <li>Learn and use a JavaScript testing framework (qUnit, Jasmine, Mocha, etc.)</li>
+                </ul>
+                </section>
+                <section>
+                 <h2>Other Safety Tips</h2>
+                    <ul>
+                        <li class="fragment">Know that <code>_gaq.push()</code> returns a boolean indicating success or failure (just like Array.push()).</li>
+                        <li class="fragment">Load <code>ga_debug.js</code> instead of <code>ga.js</code> during development; this outputs information about what GA is actually doing behind the scenes in your
+                            browser's console.
+                        </li>
+                        <li class="fragment">If you're a Chrome user install the Google Analytics Debugging extension; this lets you dynamically enable <code>ga_debug.js</code> in your browser, which is
+                            very handy if you're working on a live site.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                        <section>
+                            <h2>Tracking Events in AJAX Content</h2>
+
+                            <ul>
+                                <li>You may not control the markup</li>
+                                <li>The tracked elements are not in the DOM when the page is loaded, so you have to do a bit more work in your selectors</li>
+                            </ul>
+                        </section>
+                    <section>
+                        <h2>AJAX Content Tracking (cont.)</h2>
+                        <p>jQuery lets you specify handlers for events for elements that don't exist yet, by (essentially) listening on an (existing) element that (will) contain them.  This is not the only approach, but is the easiest to work with.
+                    </p>
+                        <pre>
+                                <code contenteditable>
+// our catalog loads transformed EAD XML via XHR when users click on the content tab
+$("#contents").on("click", ".EAD_daolink", function(evt) {
+    logGAEvent($(this), ['URL','Digitized Content','CCC']);
+});
+                            </code>
+                        </pre>
+                    <aside class="notes">
+                        An alternate approach is to chain an event handler that attaches the events after the content is loaded.  This works, but it's more code and, "yo dawg" and all that.
+                    </aside>
+                    </section>
+                </section> <!-- end AJAX -->
+
+
+            <section>
+                        <h2>On Selector Strategy (Your Markup)</h2>
+                        <ul>
+                            <li><code>*[data-ga-event]</code> matches all elements with tracking data, but is potentially very slow; this data can be valuable, but you don't want to
+                                frustrate your users.</li>
+                            <li>If you use a CSS class in concert with it (e.g. <code>.tracked[data-ga-event]</code>, it's both faster and you can temporarily disable 
+                                tracking for some elements should you need to, by simply removing the class.</li>
+                        </ul>
+                    </section>
+  
                     <section>
                         <h2>Tracking Tweaks</h2>
-                        <p>Say you've noticed (by direct observation) users idly click around a set of tabs, but you only want to count the 
-                            first click on tab during a page view as a "use."
+                        <p>We've shown some very simple examples, but you might want to do something fancier (do people do Y after trying X?) which requires
+                            maintaining state.
+                        </p>
+                        <p class="fragment">
+                            jQuery's Data API can be used to write data onto elements.
                          </p>
+                         <p class="fragment">This can probably get a bit crazy though.</p>
+
+                    </section>
+                    <!--      
                          <pre>
                             <code>
 // pass in the element that has the data attribute on it
@@ -613,32 +690,8 @@ function logGAEvent(el,data) {
                          </pre>
                          <p>Again, this is not intended to be production-ready, but just to illustrate the technique.</p>
                     </section>
-
-                    <section>
-                        <section>
-                            <h2>Tracking Events in AJAH(*) Content</h2>
-                            <p>Even if you can control the markup that comes back, you'll have to attach the event listener that sends the event to GA when the user clicks on something in 
-                            the externally loaded content.
-                            </p>
-                            <pre>
-                                <code contenteditable>
-// our catalog loads transformed EAD XML via XHR when users click on the content tab
-$("#contents").on("click", ".EAD_daolink", function(evt) {
-    logGAEvent($(this), ['URL','Digitized Content','CCC']);
-});
-                            </code>
-                        </pre>
-                    </section>
-                    <section>
-                        <h2>AJA? Content Tracking (cont.)</h2>
-                        <p>jQuery lets you specify handlers for events for elements that don't exist yet, by (essentially) listening on an (existing) element that (will) contain them.  This is not the only approach, but is the easiest to work with.
-                    </p>
-                    <aside class="notes">
-                        An alternate approach is to chain an event handler that attaches the events after the content is loaded.  This works, but it's more code and, "yo dawg" and all that.
-                    </aside>
-                    </section>
-                </section> <!-- end AJAX -->
-
+                    -->
+                    
                 <section>
                     <h2>Links</h2>
                     <ul>
@@ -650,6 +703,7 @@ $("#contents").on("click", ".EAD_daolink", function(evt) {
                         </li>
                          <li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#embedding-custom-non-visible-data-with-the-data-*-attributes">data-* attributes (WHATWG)</a></li>
                         <li><a href="http://api.jquery.com/data/">jQuery.data() API</a></li>
+                        <li><a href="https://github.com/mreidsma/Summon-Stats">Summon Stats</a (github) by Matt Reidsma.</li>
                     </ul>
                 </section>
             </div>
