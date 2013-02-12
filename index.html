@@ -474,7 +474,7 @@ _gaq.push([
                         <h2>Putting it Together</h2>
                         
                         <ol>
-                            <li class="fragment">Make an event taxonomy</li>
+                            <li class="fragment">Nail down your event taxonomy</li>
                             <li class="fragment">Edit markup</li>
                             <li class="fragment">Add handlers for the events you want to track</li>
                             <li class="fragment">Sit back and wait for the <strike>money</strike> data to roll in</li>                       
@@ -492,7 +492,6 @@ _gaq.push([
 <h6>jQuery API</h6>
     <pre>
         <code>
-
 $("a[data-ga-event]").on("click", function(evt) {
     // data-ga-event =&gt; "gaEvent"
     var data = $(this).data("gaEvent").split(",");
@@ -667,31 +666,9 @@ $("#contents").on("click", ".EAD_daolink", function(evt) {
                          <p class="fragment">This can probably get a bit crazy though.</p>
 
                     </section>
-                    <!--      
-                         <pre>
-                            <code>
-// pass in the element that has the data attribute on it
-function logGAEvent(el,data) {
-    if ( !el._tracked ) {
-        if ( data[0] !== '_trackEvent' ) {
-            data.unshift("_trackEvent");
-        }
-        // the .push() method returns a boolean indicating whether the event was sent.
-        el._tracked = _gaq.push(data);
-    }
-}
-</code>
-                         </pre>
-                         <p>Again, this is not intended to be production-ready, but just to illustrate the technique.</p>
-                    </section>
-                    -->
-                    
-               
-
+    
                 <section>
                     <h2>Thanks for Listening!</h2>
-                    <p>This is a single page of HTML, but we're mostly only responsible for the content.</p>
-                    <p>We forked Hakim El Hattab's <a href="https://github.com/hakimel/reveal.js">reveal.js</a> on github and collaboratively edited it.</p>
                 </section>
  <section>
                     <h2>Links</h2>
